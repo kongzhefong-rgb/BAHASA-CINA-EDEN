@@ -67,19 +67,20 @@
             padding: 4px;
         }
 
-        /* 毛毛虫头像 */
+        /* 毛毛虫头像 - 横向适配 */
         .caterpillar-head-container {
-            width: 60px;
-            height: 70px;
+            width: 55px;
+            height: 65px;
             position: relative;
             z-index: 30;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: -8px; 
         }
         .caterpillar-face {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             background-color: #fb923c; 
             border: 3px solid #ea580c;
             border-radius: 50%;
@@ -101,18 +102,18 @@
             position: absolute; top: -4px; left: -2.5px; width: 8px; height: 8px;
             background-color: #4b5563; border-radius: 50%;
         }
-        .antenna-l { left: 16px; transform: rotate(-25deg); }
-        .antenna-r { right: 16px; transform: rotate(25deg); }
+        .antenna-l { left: 14px; transform: rotate(-25deg); }
+        .antenna-r { right: 14px; transform: rotate(25deg); }
         
-        .eye-container { display: flex; gap: 6px; margin-top: -3px; }
-        .eye { width: 10px; height: 14px; background: white; border: 1.5px solid #374151; border-radius: 50%; position: relative; }
-        .pupil { position: absolute; width: 4.5px; height: 4.5px; background: black; border-radius: 50%; bottom: 2px; left: 50%; transform: translateX(-50%); }
-        .smile { width: 22px; height: 10px; border-bottom: 2.5px solid #374151; border-radius: 0 0 11px 11px; margin-top: 1px; }
+        .eye-container { display: flex; gap: 5px; margin-top: -3px; }
+        .eye { width: 9px; height: 13px; background: white; border: 1.5px solid #374151; border-radius: 50%; position: relative; }
+        .pupil { position: absolute; width: 4px; height: 4px; background: black; border-radius: 50%; bottom: 2px; left: 50%; transform: translateX(-50%); }
+        .smile { width: 20px; height: 9px; border-bottom: 2.5px solid #374151; border-radius: 0 0 10px 10px; margin-top: 1px; }
 
-        /* S型毛毛虫身体 */
+        /* 横向毛毛虫身体 */
         .caterpillar-slot {
-            width: 55px; 
-            height: 55px; 
+            width: 52px; 
+            height: 52px; 
             border-radius: 50%; 
             border: 2px solid #e2e8f0; 
             background-color: #ffffff;
@@ -124,15 +125,15 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             position: relative;
             z-index: 10; 
-            font-size: 0.9rem; 
+            font-size: 0.85rem; 
             text-align: center; 
-            margin: 2px -4px; 
+            margin: 0 -5px; 
             cursor: pointer;
         }
         .caterpillar-slot.filled { border: 3px solid rgba(0,0,0,0.05); color: white; z-index: 15; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         
         .wiggle { animation: wiggle 2s infinite ease-in-out; }
-        @keyframes wiggle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes wiggle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
         .progress-dot { width: 8px; height: 8px; border-radius: 50%; background-color: #e2e8f0; transition: all 0.3s ease; }
         .dot-active { background-color: #fbbf24; transform: scale(1.4); }
@@ -163,7 +164,7 @@
 
     <div id="auto-next-bar" class="loading-bar"></div>
 
-    <div id="app" class="w-full max-w-md bg-white shadow-2xl overflow-hidden relative border-x-4 border-yellow-100 mx-auto">
+    <div id="app" class="w-full max-md bg-white shadow-2xl overflow-hidden relative border-x-4 border-yellow-100 mx-auto">
         
         <header id="top-bar" class="bg-gradient-to-b from-yellow-50 to-white pt-5 pb-3 px-4 text-center flex-shrink-0 z-50">
             <h1 class="text-xl font-bold text-blue-900 mb-2">🍭 华语学习乐园</h1>
@@ -179,23 +180,19 @@
                 <div class="grid grid-cols-1 gap-3 w-full pb-10">
                     <button onclick="selectUnit(1)" class="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
                         <div class="text-3xl mb-1">🏫</div>
-                        <div class="font-bold text-yellow-800 text-lg">第一单元</div>
-                        <div class="text-[10px] text-yellow-600">我的幼儿园</div>
+                        <div class="font-bold text-yellow-800 text-lg">第一单元：我的幼儿园</div>
                     </button>
                     <button onclick="selectUnit(2)" class="p-4 bg-green-50 border-2 border-green-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
                         <div class="text-3xl mb-1">👫</div>
-                        <div class="font-bold text-green-800 text-lg">第二单元</div>
-                        <div class="text-[10px] text-green-600">一起玩，真开心</div>
+                        <div class="font-bold text-green-800 text-lg">第二单元：一起玩，真开心</div>
                     </button>
                     <button onclick="selectUnit(3)" class="p-4 bg-red-50 border-2 border-red-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
-                        <div class="text-3xl mb-1">👴👵</div>
-                        <div class="font-bold text-red-800 text-lg">第三单元 (上)</div>
-                        <div class="text-[10px] text-red-600">家庭成员</div>
+                        <div class="text-3xl mb-1">🏠</div>
+                        <div class="font-bold text-red-800 text-lg">第三单元：家是爱的港湾</div>
                     </button>
-                    <button onclick="selectUnit(4)" class="p-4 bg-blue-50 border-2 border-blue-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
-                        <div class="text-3xl mb-1">🏠🛏️</div>
-                        <div class="font-bold text-blue-800 text-lg">第三单元 (下)</div>
-                        <div class="text-[10px] text-blue-600">我的家</div>
+                    <button onclick="selectUnit(4)" class="p-4 bg-purple-50 border-2 border-purple-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
+                        <div class="text-3xl mb-1">🎒✏️</div>
+                        <div class="font-bold text-purple-800 text-lg">第四单元：我的神奇书包</div>
                     </button>
                 </div>
             </div>
@@ -250,63 +247,61 @@
                 title: "第一单元：我的幼儿园",
                 vocab: [
                     { word: '幼儿园', icon: '🏫' }, { word: '老师', icon: '👩‍🏫' }, { word: '同学', icon: '👦👧' }, 
-                    { word: '课室', icon: '📝🪑' }, { word: '学习角落', icon: '📚🧸' }, { word: '电脑室', icon: '🖥️💻' },
-                    { word: '办公室', icon: '🏢📠' }, { word: '厕所', icon: '🚻' }, { word: '游乐场', icon: '🎠' },
-                    { word: '礼堂', icon: '🏛️' }, { word: '园长', icon: '👩‍💼' }, { word: '校车司机', icon: '👨‍✈️🚌' },
-                    { word: '园工', icon: '👨‍🔧🧹' }
+                    { word: '课室', icon: '📝🪑' }, { word: '学习角落', icon: '📚🧸' }, { word: '电脑室', icon: '🖥️💻' }
                 ],
                 sentences: [
                     { parts: ['这是', '我的', '幼儿园。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-green-400'] },
                     { parts: ['幼儿园里', '有', '课室。'], colors: ['bg-pink-400', 'bg-orange-400', 'bg-indigo-400'] },
-                    { parts: ['课室里', '有', '学习角落。'], colors: ['bg-purple-400', 'bg-yellow-500', 'bg-teal-400'] }
+                    { parts: ['这是', '老师。'], colors: ['bg-blue-400', 'bg-red-400'] },
+                    { parts: ['这是', '我的', '课室。'], colors: ['bg-green-400', 'bg-blue-400', 'bg-purple-400'] },
+                    { parts: ['幼儿园里', '有同学。'], colors: ['bg-orange-400', 'bg-teal-400'] }
                 ],
                 radical: [{ char: '宀', match: ['室', '家', '官', '客', '安', '守'], fail: ['园', '师', '学', '校', '工', '公'] }]
             },
             2: {
                 title: "第二单元：一起玩，真开心",
                 vocab: [
-                    { word: '打招呼', icon: '👋' }, { word: '牵手', icon: '🤝' }, { word: '轮流等待', icon: '🚶🚶' }, 
-                    { word: '互相拥抱', icon: '🫂' }, { word: '分享玩具', icon: '👦👧🧸' }, { word: '玩具', icon: '🧸🧱🚂' }, 
-                    { word: '玩耍', icon: '👦⚽' }, { word: '玩伴', icon: '🧒🧒' }
+                    { word: '打招呼', icon: '👋' }, { word: '牵手', icon: '🤝' }, { word: '玩具', icon: '🧸🧱🚂' }, 
+                    { word: '玩耍', icon: '👦⚽' }
                 ],
                 sentences: [
                     { parts: ['大家', '一起排队，', '轮流等待。'], colors: ['bg-red-400', 'bg-orange-400', 'bg-yellow-400'] },
-                    { parts: ['我们', '一起玩耍，', '学习', '分享和拥抱。'], colors: ['bg-green-400', 'bg-blue-400', 'bg-indigo-400', 'bg-purple-400'] }
+                    { parts: ['我们', '一起', '玩耍。'], colors: ['bg-green-400', 'bg-blue-400', 'bg-red-400'] },
+                    { parts: ['这是', '我的', '玩具。'], colors: ['bg-pink-400', 'bg-indigo-400', 'bg-teal-400'] },
+                    { parts: ['大家', '分享玩具。'], colors: ['bg-orange-400', 'bg-blue-400'] },
+                    { parts: ['我们', '打招呼。'], colors: ['bg-indigo-400', 'bg-red-400'] }
                 ],
                 radical: [{ char: '王', match: ['玩', '环', '现', '珠', '班', '球'], fail: ['打', '招', '呼', '友', '等', '开'] }]
             },
             3: {
-                title: "第三单元 (上)：家庭成员",
+                title: "第三单元：家是爱的港湾",
                 vocab: [
-                    { word: '爷爷', icon: '👴🪴' }, { word: '奶奶', icon: '👵🚿' }, { word: '外公', icon: '👴📰' }, 
-                    { word: '外婆', icon: '👵🥣' }, { word: '爸爸', icon: '👨🚗' }, { word: '妈妈', icon: '👩🍳' }, 
-                    { word: '哥哥', icon: '👦💐' }, { word: '姐姐', icon: '👧🥛' }, { word: '弟弟', icon: '👦📚' }, 
-                    { word: '妹妹', icon: '👧🍚' }, { word: '洗碗', icon: '🥣🧼' }, { word: '洗车', icon: '🚗🧼' }, { word: '洗杯', icon: '🥛🧼' }
+                    { word: '爷爷', icon: '👴🪴' }, { word: '奶奶', icon: '👵🚿' }, { word: '爸爸', icon: '👨🚗' }, 
+                    { word: '妈妈', icon: '👩🍳' }, { word: '洗碗', icon: '🥣🧼' }, { word: '洗车', icon: '🚗🧼' }
                 ],
                 sentences: [
                     { parts: ['爷爷', '在', '种花。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-green-400'] },
                     { parts: ['奶奶', '在', '浇花。'], colors: ['bg-pink-400', 'bg-orange-400', 'bg-indigo-400'] },
-                    { parts: ['妈妈', '在', '煮菜。'], colors: ['bg-blue-400', 'bg-green-400', 'bg-red-400'] }
+                    { parts: ['妈妈', '在', '煮菜。'], colors: ['bg-blue-400', 'bg-green-400', 'bg-red-400'] },
+                    { parts: ['爸爸', '在', '洗车。'], colors: ['bg-orange-400', 'bg-teal-400', 'bg-blue-400'] },
+                    { parts: ['外婆', '在', '洗碗。'], colors: ['bg-purple-400', 'bg-pink-400', 'bg-teal-400'] }
                 ],
                 radical: [{ char: '氵', match: ['洗', '浇', '洒', '池', '汽', '汁'], fail: ['爷', '爸', '妈', '姐', '弟', '公'] }]
             },
             4: {
-                title: "第三单元 (下)：我的家",
+                title: "第四单元：我的神奇书包",
                 vocab: [
-                    { word: '电视机', icon: '📺' }, { word: '电灯', icon: '💡' }, { word: '沙发', icon: '🛋️' }, 
-                    { word: '电话', icon: '☎️' }, { word: '碗', icon: '🥣' }, { word: '锅', icon: '🍳' }, 
-                    { word: '杯', icon: '🥛' }, { word: '桌子', icon: '🍽️' }, { word: '餐椅', icon: '🪑' }, 
-                    { word: '床', icon: '🛏️' }, { word: '被单', icon: '🛌✨' }, { word: '肥皂', icon: '🧼' }, 
-                    { word: '牙刷', icon: '🪥' }
+                    { word: '书本', icon: '📚' }, { word: '颜色笔', icon: '🖍️' }, { word: '尺', icon: '📏' }, 
+                    { word: '剪刀', icon: '✂️' }, { word: '铅笔', icon: '✏️' }
                 ],
                 sentences: [
-                    { parts: ['弟弟', '在', '浴室', '冲凉。'], colors: ['bg-blue-400', 'bg-red-400', 'bg-green-400', 'bg-yellow-500'] },
-                    { parts: ['妹妹', '在', '卧室', '睡觉。'], colors: ['bg-pink-400', 'bg-blue-400', 'bg-purple-400', 'bg-teal-400'] },
-                    { parts: ['我们', '在', '饭厅', '吃饭。'], colors: ['bg-orange-400', 'bg-indigo-400', 'bg-green-400', 'bg-red-400'] },
-                    { parts: ['妈妈', '在', '厨房里', '煮饭。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-orange-400', 'bg-teal-400'] },
-                    { parts: ['我和家人', '在', '客厅里', '聊天。'], colors: ['bg-indigo-400', 'bg-purple-400', 'bg-pink-400', 'bg-blue-400'] }
+                    { parts: ['这是', '我的', '书包。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-purple-400'] },
+                    { parts: ['书包里', '有书本。'], colors: ['bg-orange-400', 'bg-blue-400'] },
+                    { parts: ['书包里', '有', '颜色笔。'], colors: ['bg-green-400', 'bg-blue-400', 'bg-teal-400'] },
+                    { parts: ['我', '喜欢', '我的', '神奇书包。'], colors: ['bg-pink-400', 'bg-indigo-400', 'bg-yellow-500', 'bg-green-400'] },
+                    { parts: ['书包里有', '铅笔、尺', '和剪刀。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-indigo-400'] }
                 ],
-                radical: [{ char: '木', match: ['机', '椅', '桌', '校', '样', '林'], fail: ['电', '灯', '沙', '发', '床', '单'] }]
+                radical: [{ char: '竹', match: ['笔', '简', '等', '箱', '笑', '答'], fail: ['书', '尺', '刀', '剪', '单'] }]
             }
         };
 
@@ -319,31 +314,27 @@
         let matchedCount = 0;
         let isProcessing = false;
         let isMusicOn = false;
+        let isTransitioning = false;
 
         let bgMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3'); 
         bgMusic.loop = true; bgMusic.volume = 0.05;
         const successAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
         const failAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/951/951-preview.mp3');
 
-        // 优化发声函数，确保兼容性
         function speak(text, callback) {
             if (!text) return;
-            // 先停止当前所有语音，清空队列
             window.speechSynthesis.cancel();
-            
-            // 创建新的语音对象
             const utter = new SpeechSynthesisUtterance(text);
-            utter.lang = 'zh-CN'; 
-            utter.rate = 0.65; // 稍微调快一点点，更自然
-            utter.pitch = 1.1; // 稍微调高一点点，适合小朋友
-            
+            utter.lang = 'zh-CN'; utter.rate = 0.65; utter.pitch = 1.1;
+            let hasCalledBack = false;
+            const safeCallback = () => {
+                if (!hasCalledBack) { hasCalledBack = true; if (callback) callback(); }
+            };
             if (callback) {
-                utter.onend = () => callback();
-                // 某些浏览器 onend 不触发的兜底方案
-                setTimeout(() => { if (isProcessing) utter.onend(); }, 3000);
+                utter.onend = safeCallback;
+                utter.onerror = safeCallback;
+                setTimeout(safeCallback, 3500);
             }
-            
-            // 执行播放
             window.speechSynthesis.speak(utter);
         }
 
@@ -355,7 +346,6 @@
         }
 
         function enterUnitSelection() {
-            // 解锁语音权限：在用户第一次点击时播放一段空音
             speak(' ');
             document.getElementById('start-page').classList.add('hidden');
             document.getElementById('main-menu').classList.add('hidden');
@@ -368,7 +358,7 @@
             currentUnit = u;
             document.getElementById('unit-page').classList.add('hidden');
             document.getElementById('main-menu').classList.remove('hidden');
-            document.getElementById('unit-info').innerText = "练习：" + unitData[u].title;
+            document.getElementById('unit-info').innerText = "当前练习：" + unitData[u].title;
         }
 
         function backToMenu() {
@@ -382,7 +372,6 @@
 
         function setupGame(mode) {
             currentMode = mode; step = 0; bgMusic.pause();
-            // 解锁语音权限
             speak(' ');
             document.getElementById('main-menu').classList.add('hidden');
             document.getElementById('stage').classList.remove('hidden');
@@ -397,7 +386,9 @@
                     return pool;
                 });
             } else if (mode === 'sentence') {
-                sessionData = [...data.sentences].sort(() => Math.random() - 0.5).slice(0, 5); 
+                let pool = [...data.sentences].sort(() => Math.random() - 0.5);
+                while(pool.length < 5) pool = pool.concat(data.sentences);
+                sessionData = pool.slice(0, 5); 
             } else if (mode === 'radical') { 
                 sessionData = [...data.radical]; 
             } else { 
@@ -408,7 +399,10 @@
 
         function renderStep() {
             isProcessing = false;
-            document.getElementById('auto-next-bar').style.width = '0%';
+            isTransitioning = false;
+            const bar = document.getElementById('auto-next-bar');
+            bar.style.transition = 'none';
+            bar.style.width = '0%';
             const content = document.getElementById('stage-content');
             content.innerHTML = '';
             updateDots();
@@ -433,20 +427,19 @@
         }
 
         function triggerSuccessFeedback() {
+            if (isTransitioning) return;
+            isTransitioning = true;
             successAudio.currentTime = 0; successAudio.play().catch(()=>{});
             const bar = document.getElementById('auto-next-bar');
             bar.style.transition = 'none'; bar.style.width = '0%';
-            // 加速切换逻辑
             setTimeout(()=>{ bar.style.transition = 'width 0.6s linear'; bar.style.width = '100%'; }, 10);
             setTimeout(() => { 
-                step++; 
+                step++; isTransitioning = false;
                 if (step >= sessionData.length) showVictory(); else renderStep(); 
             }, 700);
         }
 
-        function playError() {
-            failAudio.currentTime = 0; failAudio.play().catch(()=>{});
-        }
+        function playError() { failAudio.currentTime = 0; failAudio.play().catch(()=>{}); }
 
         function renderMemoryFlip(chosenPool) {
             flippedCards = []; matchedCount = 0;
@@ -456,43 +449,31 @@
                 cards.push({ type: 'word', value: v.word, matchId: v.word });
             });
             cards.sort(() => Math.random() - 0.5);
-
             document.getElementById('stage-content').innerHTML = `
                 <div class="grid grid-cols-2 gap-4 p-1 w-full max-w-[280px]">
                     ${cards.map((c) => `
                         <div class="memory-card" data-match="${c.matchId}" onclick="handleCardClick(this)">
-                            <div class="memory-card-inner">
-                                <div class="card-front">?</div>
-                                <div class="card-back">${c.value}</div>
-                            </div>
+                            <div class="memory-card-inner"><div class="card-front">?</div><div class="card-back">${c.value}</div></div>
                         </div>
                     `).join('')}
                 </div>
-                <p class="text-orange-500 font-bold text-center mt-3 animate-bounce text-lg">第 ${step+1} 关：配配对吧！</p>
+                <p class="text-orange-500 font-bold text-center mt-3 animate-bounce text-lg">第 ${step+1} 关：配配对！</p>
             `;
         }
 
         function handleCardClick(cardEl) {
-            if (isProcessing || cardEl.classList.contains('is-flipped')) return;
+            if (isProcessing || isTransitioning || cardEl.classList.contains('is-flipped')) return;
             cardEl.classList.add('is-flipped');
             const matchId = cardEl.dataset.match;
             speak(matchId);
             flippedCards.push(cardEl);
-
             if (flippedCards.length === 2) {
                 isProcessing = true;
                 const [c1, c2] = flippedCards;
                 if (c1.dataset.match === c2.dataset.match) {
-                    setTimeout(() => {
-                        matchedCount++; flippedCards = []; isProcessing = false;
-                        if (matchedCount === 3) triggerSuccessFeedback();
-                    }, 400); // 缩短配对成功反馈
+                    setTimeout(() => { matchedCount++; flippedCards = []; isProcessing = false; if (matchedCount === 3) triggerSuccessFeedback(); }, 400);
                 } else {
-                    setTimeout(() => {
-                        playError();
-                        c1.classList.remove('is-flipped'); c2.classList.remove('is-flipped');
-                        flippedCards = []; isProcessing = false;
-                    }, 800);
+                    setTimeout(() => { playError(); c1.classList.remove('is-flipped'); c2.classList.remove('is-flipped'); flippedCards = []; isProcessing = false; }, 800);
                 }
             }
         }
@@ -500,9 +481,8 @@
         function renderSentence(data) {
             window.currentTempSentence = Array(data.parts.length).fill(null);
             const shuffled = [...data.parts].sort(() => Math.random() - 0.5);
-            
             let caterpillarHtml = `
-                <div class="flex flex-col items-center w-full">
+                <div class="flex flex-row items-center flex-wrap justify-center w-full px-2 gap-y-2">
                     <div class="caterpillar-head-container wiggle">
                         <div class="antenna antenna-l"></div><div class="antenna antenna-r"></div>
                         <div class="caterpillar-face">
@@ -510,41 +490,22 @@
                             <div class="smile"></div>
                         </div>
                     </div>
-                    <div class="flex flex-col items-center">
+                    ${data.parts.map((_, i) => `<div class="caterpillar-slot wiggle" id="slot-${i}" onclick="undoSentencePart(${i})" style="animation-delay: ${i * 0.15}s">${i + 1}</div>`).join('')}
+                </div>
             `;
-            
-            for (let i = 0; i < data.parts.length; i += 2) {
-                let rowDirection = (Math.floor(i / 2) % 2 === 0) ? 'flex-row' : 'flex-row-reverse';
-                let rowShift = (Math.floor(i / 2) % 2 === 0) ? 'translate-x-3' : '-translate-x-3';
-                caterpillarHtml += `<div class="flex ${rowDirection} ${rowShift} items-center">`;
-                caterpillarHtml += `<div class="caterpillar-slot wiggle" id="slot-${i}" onclick="undoSentencePart(${i})" style="animation-delay: ${i * 0.1}s">${i + 1}</div>`;
-                if (i + 1 < data.parts.length) {
-                    caterpillarHtml += `<div class="caterpillar-slot wiggle" id="slot-${i+1}" onclick="undoSentencePart(${i+1})" style="animation-delay: ${(i+1) * 0.1}s">${i + 2}</div>`;
-                }
-                caterpillarHtml += `</div>`;
-            }
-            caterpillarHtml += `</div></div>`;
-
             document.getElementById('stage-content').innerHTML = `
-                <div class="w-full flex flex-col items-center space-y-4">
-                    <div class="w-full bg-blue-50/40 rounded-[2.5rem] py-4 px-2 border-2 border-dashed border-blue-100 flex justify-center">
-                        ${caterpillarHtml}
+                <div class="w-full flex flex-col items-center space-y-6">
+                    <div class="w-full bg-blue-50/40 rounded-[2.5rem] py-8 px-2 border-2 border-dashed border-blue-100 flex justify-center items-center min-h-[160px]">${caterpillarHtml}</div>
+                    <div class="flex flex-wrap gap-2.5 justify-center w-full px-2 max-h-[30vh] overflow-y-auto no-scrollbar">
+                        ${shuffled.map((word, idx) => `<button id="sentence-btn-${idx}" onclick="handleSentenceClick(${idx}, '${word}', '${data.parts.join('')}')" class="px-4 py-3 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-2xl text-lg shadow-md active:scale-90 transition">${word}</button>`).join('')}
                     </div>
-                    <div class="flex flex-wrap gap-2.5 justify-center w-full px-2 max-h-[35vh] overflow-y-auto no-scrollbar">
-                        ${shuffled.map((word, idx) => `
-                            <button id="sentence-btn-${idx}" onclick="handleSentenceClick(${idx}, '${word}', '${data.parts.join('')}')" 
-                                    class="px-4 py-2 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-2xl text-base shadow-md active:scale-90 transition">
-                                ${word}
-                            </button>
-                        `).join('')}
-                    </div>
-                    <p class="text-[10px] text-blue-300">点击毛毛虫身上的字可以拿回来重新排！</p>
+                    <p class="text-[11px] text-blue-300 font-bold">点击毛毛虫身上的字可以拿回来哦！</p>
                 </div>
             `;
         }
 
         function handleSentenceClick(btnIdx, word, full) {
-            if (isProcessing) return;
+            if (isProcessing || isTransitioning) return;
             speak(word);
             const emptyIdx = window.currentTempSentence.findIndex(s => s === null);
             if (emptyIdx === -1) return;
@@ -556,12 +517,12 @@
             window.currentTempSentence[emptyIdx] = word;
             if (window.currentTempSentence.filter(x => x !== null).join('') === full) {
                 isProcessing = true;
-                setTimeout(() => { speak(full, () => triggerSuccessFeedback()); }, 600);
+                setTimeout(() => { speak(full, () => triggerSuccessFeedback()); }, 800);
             }
         }
 
         window.undoSentencePart = function(slotIdx) {
-            if (isProcessing) return;
+            if (isProcessing || isTransitioning) return;
             const slot = document.getElementById(`slot-${slotIdx}`);
             if (!slot.classList.contains('filled')) return;
             const btnIdx = slot.dataset.btnRef;
@@ -576,82 +537,54 @@
 
         function renderCircle(target) {
             const pool = unitData[currentUnit].vocab;
-            const distractors = pool.filter(v => v.word !== target.word).sort(() => Math.random() - 0.5).slice(0, 1);
-            const options = distractors.concat(target).sort(() => Math.random() - 0.5);
-
+            const options = [target, pool.filter(v => v.word !== target.word).sort(() => Math.random() - 0.5)[0]].sort(() => Math.random() - 0.5);
             document.getElementById('stage-content').innerHTML = `
                 <div class="flex flex-col items-center w-full space-y-6">
                     <div class="text-[4rem] p-6 bg-yellow-50 rounded-[2rem] border-4 border-dashed border-yellow-100 flex items-center justify-center min-h-[100px] shadow-inner">${target.icon}</div>
                     <div class="grid grid-cols-1 gap-4 w-full px-4">
-                        ${options.map(opt => `
-                            <button onclick="checkCircle(this, '${opt.word}', '${target.word}')" class="relative py-6 text-2xl font-bold bg-white border-2 border-gray-100 rounded-[2rem] active:scale-95 transition shadow-md">
-                                ${opt.word}
-                                <div class="circle-box hidden absolute inset-0"><svg class="circle-svg" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="46" ry="22" class="circle-path" /></svg></div>
-                            </button>
-                        `).join('')}
+                        ${options.map(opt => `<button onclick="checkCircle(this, '${opt.word}', '${target.word}')" class="relative py-6 text-2xl font-bold bg-white border-2 border-gray-100 rounded-[2rem] active:scale-95 transition shadow-md">
+                                ${opt.word}<div class="circle-box hidden absolute inset-0"><svg class="circle-svg" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="46" ry="22" class="circle-path" /></svg></div>
+                            </button>`).join('')}
                     </div>
                 </div>
             `;
         }
 
         function checkCircle(btn, selected, correct) {
-            if (isProcessing) return;
+            if (isProcessing || isTransitioning) return;
             speak(selected);
-            if (selected === correct) {
-                isProcessing = true;
-                btn.querySelector('.circle-box').classList.remove('hidden');
-                triggerSuccessFeedback();
-            } else {
-                playError();
-                btn.classList.add('border-red-300', 'text-red-400');
-            }
+            if (selected === correct) { isProcessing = true; btn.querySelector('.circle-box').classList.remove('hidden'); triggerSuccessFeedback(); }
+            else { playError(); btn.classList.add('border-red-300', 'text-red-400'); }
         }
 
         function renderListening(target) {
             const pool = unitData[currentUnit].vocab;
-            const distractors = pool.filter(v => v.word !== target.word).sort(() => Math.random() - 0.5).slice(0, 2);
-            const options = distractors.concat(target).sort(() => Math.random() - 0.5);
-
+            const options = [target, ...pool.filter(v => v.word !== target.word).sort(() => Math.random() - 0.5).slice(0, 2)].sort(() => Math.random() - 0.5);
             document.getElementById('stage-content').innerHTML = `
                 <div class="flex flex-col items-center w-full space-y-8">
                     <button id="speaker-btn" onclick="speak('${target.word}')" class="w-36 h-36 bg-blue-500 text-white rounded-full text-8xl shadow-xl active:scale-90 flex items-center justify-center border-4 border-white animate-pulse">🔊</button>
-                    <p class="text-blue-400 font-bold">点击喇叭听声音</p>
                     <div class="grid grid-cols-1 gap-4 w-full px-4">
-                        ${options.map(opt => `
-                            <button onclick="checkListening(this, '${opt.word}', '${target.word}')" class="py-6 text-2xl font-bold bg-white border-4 border-blue-50 rounded-[2rem] shadow-md">
-                                ${opt.word}
-                            </button>
-                        `).join('')}
+                        ${options.map(opt => `<button onclick="checkListening(this, '${opt.word}', '${target.word}')" class="py-6 text-2xl font-bold bg-white border-4 border-blue-50 rounded-[2rem] shadow-md">${opt.word}</button>`).join('')}
                     </div>
                 </div>
             `;
-            // 尝试自动播放
             setTimeout(() => speak(target.word), 300);
         }
 
         function checkListening(btn, selected, correct) {
-            if (isProcessing) return;
-            if (selected === correct) {
-                isProcessing = true;
-                btn.classList.add('bg-green-500', 'text-white');
-                triggerSuccessFeedback();
-            } else {
-                playError();
-                btn.classList.add('border-red-200', 'text-red-300');
-            }
+            if (isProcessing || isTransitioning) return;
+            if (selected === correct) { isProcessing = true; btn.classList.add('bg-green-500', 'text-white'); triggerSuccessFeedback(); }
+            else { playError(); btn.classList.add('border-red-200', 'text-red-300'); }
         }
 
         function renderRadical(rData) {
             radicalFound = 0;
             const pool = rData.match.map(c => ({char: c, isMatch: true})).concat(rData.fail.map(c => ({char: c, isMatch: false}))).sort(() => Math.random() - 0.5);
-
             document.getElementById('stage-content').innerHTML = `
                 <div class="text-center w-full space-y-8">
                     <p class="text-xl font-bold">找出带 <span class="text-5xl font-black text-red-500 mx-1">“${rData.char}”</span> 的字：</p>
                     <div class="grid grid-cols-3 gap-4 justify-items-center px-4">
-                        ${pool.map(r => `
-                            <button onclick="handleRadicalClick(this, ${r.isMatch})" class="w-20 h-20 text-3xl font-bold bg-white border-2 border-pink-100 rounded-full flex items-center justify-center shadow-md active:scale-95 transition">${r.char}</button>
-                        `).join('')}
+                        ${pool.map(r => `<button onclick="handleRadicalClick(this, ${r.isMatch})" class="w-20 h-20 text-3xl font-bold bg-white border-2 border-pink-100 rounded-full flex items-center justify-center shadow-md active:scale-95 transition">${r.char}</button>`).join('')}
                     </div>
                     <div id="radical-status" class="text-xl text-pink-500 font-bold py-3 px-10 bg-pink-50 rounded-full inline-block">已找到：0 / 6</div>
                 </div>
@@ -659,28 +592,15 @@
         }
 
         function handleRadicalClick(btn, isMatch) {
-            if (btn.disabled || isProcessing) return;
-            if (isMatch) {
-                btn.disabled = true;
-                btn.classList.add('bg-green-100', 'border-green-500', 'text-green-700');
-                radicalFound++;
-                document.getElementById('radical-status').innerText = `已找到：${radicalFound} / 6`;
-                speak(btn.innerText);
-                if (radicalFound >= 6) { isProcessing = true; triggerSuccessFeedback(); }
-            } else {
-                playError();
-                btn.classList.add('opacity-40', 'bg-gray-100');
-            }
+            if (btn.disabled || isProcessing || isTransitioning) return;
+            if (isMatch) { btn.disabled = true; btn.classList.add('bg-green-100', 'border-green-500', 'text-green-700'); radicalFound++; document.getElementById('radical-status').innerText = `已找到：${radicalFound} / 6`; speak(btn.innerText); if (radicalFound >= 6) { isProcessing = true; triggerSuccessFeedback(); } }
+            else { playError(); btn.classList.add('opacity-40', 'bg-gray-100'); }
         }
 
         function showVictory() {
             speak("你真棒！挑战成功！");
             document.getElementById('stage-content').innerHTML = `
-                <div class="text-center p-4">
-                    <div class="text-[8rem] animate-bounce mb-6">🏆</div>
-                    <h2 class="text-3xl font-bold text-orange-500 mb-10">挑战成功！</h2>
-                    <button onclick="backToMenu()" class="px-14 py-4 bg-yellow-400 text-blue-900 text-2xl font-bold rounded-[2rem] shadow-lg active:scale-95 transition">返回主页</button>
-                </div>
+                <div class="text-center p-4"><div class="text-[8rem] animate-bounce mb-6">🏆</div><h2 class="text-3xl font-bold text-orange-500 mb-10">挑战成功！</h2><button onclick="backToMenu()" class="px-14 py-4 bg-yellow-400 text-blue-900 text-2xl font-bold rounded-[2rem] shadow-lg active:scale-95 transition">返回主页</button></div>
             `;
             document.getElementById('progress-dots').classList.add('hidden');
         }
