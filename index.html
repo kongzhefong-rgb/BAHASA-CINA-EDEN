@@ -21,7 +21,7 @@
             margin: 0;
         }
 
-        /* 3D 翻牌动画 - 2x3 极大化显示 */
+        /* 3D 翻牌动画 */
         .memory-card {
             perspective: 1000px;
             width: 100%;
@@ -54,13 +54,13 @@
         .card-front {
             background-color: #fbbf24;
             color: white;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: bold;
         }
         .card-back {
             background-color: white;
             transform: rotateY(180deg);
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: bold;
             color: #1e3a8a;
             text-align: center;
@@ -69,8 +69,8 @@
 
         /* 毛毛虫头像 */
         .caterpillar-head-container {
-            width: 65px;
-            height: 75px;
+            width: 60px;
+            height: 70px;
             position: relative;
             z-index: 30;
             display: flex;
@@ -78,8 +78,8 @@
             justify-content: center;
         }
         .caterpillar-face {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             background-color: #fb923c; 
             border: 3px solid #ea580c;
             border-radius: 50%;
@@ -92,29 +92,29 @@
         .antenna {
             position: absolute;
             top: -10px;
-            width: 3.5px;
-            height: 16px;
+            width: 3px;
+            height: 14px;
             background-color: #4b5563;
         }
         .antenna::after {
             content: '';
-            position: absolute; top: -5px; left: -3.25px; width: 10px; height: 10px;
+            position: absolute; top: -4px; left: -2.5px; width: 8px; height: 8px;
             background-color: #4b5563; border-radius: 50%;
         }
-        .antenna-l { left: 18px; transform: rotate(-25deg); }
-        .antenna-r { right: 18px; transform: rotate(25deg); }
+        .antenna-l { left: 16px; transform: rotate(-25deg); }
+        .antenna-r { right: 16px; transform: rotate(25deg); }
         
-        .eye-container { display: flex; gap: 7px; margin-top: -3px; }
-        .eye { width: 11px; height: 15px; background: white; border: 1.5px solid #374151; border-radius: 50%; position: relative; }
-        .pupil { position: absolute; width: 5px; height: 5px; background: black; border-radius: 50%; bottom: 2px; left: 50%; transform: translateX(-50%); }
-        .smile { width: 24px; height: 11px; border-bottom: 3px solid #374151; border-radius: 0 0 12px 12px; margin-top: 1px; }
+        .eye-container { display: flex; gap: 6px; margin-top: -3px; }
+        .eye { width: 10px; height: 14px; background: white; border: 1.5px solid #374151; border-radius: 50%; position: relative; }
+        .pupil { position: absolute; width: 4.5px; height: 4.5px; background: black; border-radius: 50%; bottom: 2px; left: 50%; transform: translateX(-50%); }
+        .smile { width: 22px; height: 10px; border-bottom: 2.5px solid #374151; border-radius: 0 0 11px 11px; margin-top: 1px; }
 
-        /* S型毛毛虫身体 - 2列 S 型排版 */
+        /* S型毛毛虫身体 */
         .caterpillar-slot {
-            width: 58px; 
-            height: 58px; 
+            width: 55px; 
+            height: 55px; 
             border-radius: 50%; 
-            border: 2.5px solid #e2e8f0; 
+            border: 2px solid #e2e8f0; 
             background-color: #ffffff;
             display: flex; 
             align-items: center; 
@@ -124,25 +124,25 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             position: relative;
             z-index: 10; 
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             text-align: center; 
             margin: 2px -4px; 
             cursor: pointer;
         }
-        .caterpillar-slot.filled { border: 4px solid rgba(0,0,0,0.05); color: white; z-index: 15; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+        .caterpillar-slot.filled { border: 3px solid rgba(0,0,0,0.05); color: white; z-index: 15; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         
         .wiggle { animation: wiggle 2s infinite ease-in-out; }
         @keyframes wiggle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        .progress-dot { width: 9px; height: 9px; border-radius: 50%; background-color: #e2e8f0; transition: all 0.3s ease; }
-        .dot-active { background-color: #fbbf24; transform: scale(1.5); }
+        .progress-dot { width: 8px; height: 8px; border-radius: 50%; background-color: #e2e8f0; transition: all 0.3s ease; }
+        .dot-active { background-color: #fbbf24; transform: scale(1.4); }
         .dot-done { background-color: #10b981; }
 
-        .circle-svg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 135%; height: 135%; pointer-events: none; z-index: 20; }
-        .circle-path { fill: none; stroke: #ff4757; stroke-width: 9; stroke-linecap: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawCircle 0.8s ease-out forwards; }
+        .circle-svg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 130%; height: 130%; pointer-events: none; z-index: 20; }
+        .circle-path { fill: none; stroke: #ff4757; stroke-width: 8; stroke-linecap: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawCircle 0.8s ease-out forwards; }
         @keyframes drawCircle { to { stroke-dashoffset: 0; } }
 
-        .loading-bar { position: fixed; top: 0; left: 0; height: 5px; background: #10b981; width: 0%; z-index: 200; transition: width 1.5s linear; }
+        .loading-bar { position: fixed; top: 0; left: 0; height: 4px; background: #10b981; width: 0%; z-index: 200; transition: width 0.6s linear; }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -167,25 +167,35 @@
         
         <header id="top-bar" class="bg-gradient-to-b from-yellow-50 to-white pt-5 pb-3 px-4 text-center flex-shrink-0 z-50">
             <h1 class="text-xl font-bold text-blue-900 mb-2">🍭 华语学习乐园</h1>
-            <div id="progress-dots" class="hidden flex justify-center gap-2">
+            <div id="progress-dots" class="hidden flex justify-center gap-1.5">
                 <div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div>
             </div>
         </header>
 
         <main class="no-scrollbar flex flex-col">
             
-            <div id="unit-page" class="hidden flex-grow flex flex-col items-center justify-center p-6 space-y-5">
-                <h2 class="text-2xl font-bold text-orange-600">请选择单元</h2>
-                <div class="grid grid-cols-1 gap-4 w-full">
-                    <button onclick="selectUnit(1)" class="p-5 bg-yellow-50 border-2 border-yellow-200 rounded-[2rem] text-left active:scale-95 transition shadow-sm">
-                        <div class="text-4xl mb-1">🏫</div>
+            <div id="unit-page" class="hidden flex-grow flex flex-col items-center justify-start p-6 space-y-3 overflow-y-auto">
+                <h2 class="text-2xl font-bold text-orange-600 mb-2">请选择单元</h2>
+                <div class="grid grid-cols-1 gap-3 w-full pb-10">
+                    <button onclick="selectUnit(1)" class="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
+                        <div class="text-3xl mb-1">🏫</div>
                         <div class="font-bold text-yellow-800 text-lg">第一单元</div>
-                        <div class="text-xs text-yellow-600">开学探险日 (我的幼儿园)</div>
+                        <div class="text-[10px] text-yellow-600">我的幼儿园</div>
                     </button>
-                    <button onclick="selectUnit(2)" class="p-5 bg-green-50 border-2 border-green-200 rounded-[2rem] text-left active:scale-95 transition shadow-sm">
-                        <div class="text-4xl mb-1">👫</div>
+                    <button onclick="selectUnit(2)" class="p-4 bg-green-50 border-2 border-green-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
+                        <div class="text-3xl mb-1">👫</div>
                         <div class="font-bold text-green-800 text-lg">第二单元</div>
-                        <div class="text-xs text-green-600">一起玩，真开心 (学习分享)</div>
+                        <div class="text-[10px] text-green-600">一起玩，真开心</div>
+                    </button>
+                    <button onclick="selectUnit(3)" class="p-4 bg-red-50 border-2 border-red-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
+                        <div class="text-3xl mb-1">👴👵</div>
+                        <div class="font-bold text-red-800 text-lg">第三单元 (上)</div>
+                        <div class="text-[10px] text-red-600">家庭成员</div>
+                    </button>
+                    <button onclick="selectUnit(4)" class="p-4 bg-blue-50 border-2 border-blue-200 rounded-[1.5rem] text-left active:scale-95 transition shadow-sm">
+                        <div class="text-3xl mb-1">🏠🛏️</div>
+                        <div class="font-bold text-blue-800 text-lg">第三单元 (下)</div>
+                        <div class="text-[10px] text-blue-600">我的家</div>
                     </button>
                 </div>
             </div>
@@ -196,48 +206,48 @@
                 <button onclick="enterUnitSelection()" class="px-12 py-5 bg-orange-400 text-white text-2xl font-bold rounded-full shadow-lg active:scale-95 transition">点击开始</button>
             </div>
 
-            <nav id="main-menu" class="hidden p-4 grid grid-cols-2 gap-4 flex-grow content-center">
-                <div id="unit-info" class="col-span-2 text-center mb-2 font-bold text-orange-500 text-lg">当前练习：第一单元</div>
-                <button onclick="setupGame('memory')" class="p-5 bg-orange-50 border-b-4 border-orange-200 rounded-[1.5rem] text-center active:scale-95 transition shadow-sm">
-                    <div class="text-5xl mb-1">🎴</div>
-                    <div class="font-bold text-orange-800">翻一翻</div>
+            <nav id="main-menu" class="hidden p-4 grid grid-cols-2 gap-3 flex-grow content-center">
+                <div id="unit-info" class="col-span-2 text-center mb-1 font-bold text-orange-500 text-sm">当前练习：第一单元</div>
+                <button onclick="setupGame('memory')" class="p-4 bg-orange-50 border-b-4 border-orange-200 rounded-[1.25rem] text-center active:scale-95 transition shadow-sm">
+                    <div class="text-4xl mb-1">🎴</div>
+                    <div class="font-bold text-orange-800 text-sm">翻一翻</div>
                 </button>
-                <button onclick="setupGame('circle')" class="p-5 bg-green-50 border-b-4 border-green-200 rounded-[1.5rem] text-center active:scale-95 transition shadow-sm">
-                    <div class="text-5xl mb-1">⭕</div>
-                    <div class="font-bold text-green-800">看图圈词</div>
+                <button onclick="setupGame('circle')" class="p-4 bg-green-50 border-b-4 border-green-200 rounded-[1.25rem] text-center active:scale-95 transition shadow-sm">
+                    <div class="text-4xl mb-1">⭕</div>
+                    <div class="font-bold text-green-800 text-sm">看图圈词</div>
                 </button>
-                <button onclick="setupGame('listening')" class="p-5 bg-blue-50 border-b-4 border-blue-200 rounded-[1.5rem] text-center active:scale-95 transition shadow-sm">
-                    <div class="text-5xl mb-1">👂</div>
-                    <div class="font-bold text-blue-800">听音辨字</div>
+                <button onclick="setupGame('listening')" class="p-4 bg-blue-50 border-b-4 border-blue-200 rounded-[1.25rem] text-center active:scale-95 transition shadow-sm">
+                    <div class="text-4xl mb-1">👂</div>
+                    <div class="font-bold text-blue-800 text-sm">听音辨字</div>
                 </button>
-                <button onclick="setupGame('sentence')" class="p-5 bg-purple-50 border-b-4 border-purple-200 rounded-[1.5rem] text-center active:scale-95 transition shadow-sm">
-                    <div class="text-5xl mb-1">🐛</div>
-                    <div class="font-bold text-purple-800">排句子</div>
+                <button onclick="setupGame('sentence')" class="p-4 bg-purple-50 border-b-4 border-purple-200 rounded-[1.25rem] text-center active:scale-95 transition shadow-sm">
+                    <div class="text-4xl mb-1">🐛</div>
+                    <div class="font-bold text-purple-800 text-sm">排句子</div>
                 </button>
-                <button onclick="setupGame('radical')" class="p-5 bg-pink-50 border-b-4 border-pink-200 rounded-[1.5rem] text-center active:scale-95 transition shadow-sm">
-                    <div class="text-5xl mb-1">🏛️</div>
-                    <div class="font-bold text-pink-800">部首寻宝</div>
+                <button onclick="setupGame('radical')" class="p-4 bg-pink-50 border-b-4 border-pink-200 rounded-[1.25rem] text-center active:scale-95 transition shadow-sm">
+                    <div class="text-4xl mb-1">🏛️</div>
+                    <div class="font-bold text-pink-800 text-sm">部首寻宝</div>
                 </button>
-                <div class="flex items-center justify-center flex-col gap-2">
-                    <button onclick="toggleMusic()" id="music-btn" class="text-xl p-4 bg-gray-50 rounded-full border-2 border-gray-100 shadow-inner">🔇</button>
-                    <button onclick="enterUnitSelection()" class="text-xs font-bold text-blue-500 underline">更换单元</button>
+                <div class="flex items-center justify-center flex-col gap-1">
+                    <button onclick="toggleMusic()" id="music-btn" class="text-lg p-3 bg-gray-50 rounded-full border-2 border-gray-100 shadow-inner">🔇</button>
+                    <button onclick="enterUnitSelection()" class="text-[10px] font-bold text-blue-500 underline">更换单元</button>
                 </div>
             </nav>
 
-            <div id="stage" class="hidden flex-grow flex flex-col p-4 relative overflow-hidden">
-                <div id="stage-content" class="flex-grow flex flex-col items-center justify-start space-y-4 pt-4"></div>
+            <div id="stage" class="hidden flex-grow flex flex-col p-3 relative overflow-hidden">
+                <div id="stage-content" class="flex-grow flex flex-col items-center justify-start space-y-4 pt-2"></div>
             </div>
         </main>
 
-        <footer id="stage-footer" class="hidden p-5 text-center flex-shrink-0 bg-white border-t-2 border-yellow-50 z-50 shadow-[0_-5px_15px_rgba(0,0,0,0.03)]">
-            <button onclick="backToMenu()" class="w-full py-4 bg-gray-100 text-gray-500 font-bold rounded-2xl active:scale-95 transition text-lg">回到主页</button>
+        <footer id="stage-footer" class="hidden p-4 text-center flex-shrink-0 bg-white border-t-2 border-yellow-50 z-50 shadow-[0_-5px_15px_rgba(0,0,0,0.03)]">
+            <button onclick="backToMenu()" class="w-full py-3 bg-gray-100 text-gray-500 font-bold rounded-xl active:scale-95 transition text-base">回到主页</button>
         </footer>
     </div>
 
     <script>
         const unitData = {
             1: {
-                title: "第一单元：开学探险日",
+                title: "第一单元：我的幼儿园",
                 vocab: [
                     { word: '幼儿园', icon: '🏫' }, { word: '老师', icon: '👩‍🏫' }, { word: '同学', icon: '👦👧' }, 
                     { word: '课室', icon: '📝🪑' }, { word: '学习角落', icon: '📚🧸' }, { word: '电脑室', icon: '🖥️💻' },
@@ -248,12 +258,9 @@
                 sentences: [
                     { parts: ['这是', '我的', '幼儿园。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-green-400'] },
                     { parts: ['幼儿园里', '有', '课室。'], colors: ['bg-pink-400', 'bg-orange-400', 'bg-indigo-400'] },
-                    { parts: ['课室里', '有', '学习角落。'], colors: ['bg-purple-400', 'bg-yellow-500', 'bg-teal-400'] },
-                    { parts: ['幼儿园里', '有', '电脑室', '和', '办公室。'], colors: ['bg-blue-400', 'bg-red-400', 'bg-green-400', 'bg-yellow-400', 'bg-pink-400'] },
-                    { parts: ['游乐场', '旁边', '有', '厕所。'], colors: ['bg-orange-400', 'bg-teal-400', 'bg-blue-400', 'bg-red-400'] },
-                    { parts: ['礼堂里', '有', '园长，', '老师和同学。'], colors: ['bg-blue-400', 'bg-green-400', 'bg-red-400', 'bg-purple-400'] }
+                    { parts: ['课室里', '有', '学习角落。'], colors: ['bg-purple-400', 'bg-yellow-500', 'bg-teal-400'] }
                 ],
-                radical: { char: '宀', match: ['室', '家', '官', '客', '安', '守'], fail: ['园', '师', '学', '校', '工', '公'] }
+                radical: [{ char: '宀', match: ['室', '家', '官', '客', '安', '守'], fail: ['园', '师', '学', '校', '工', '公'] }]
             },
             2: {
                 title: "第二单元：一起玩，真开心",
@@ -263,14 +270,43 @@
                     { word: '玩耍', icon: '👦⚽' }, { word: '玩伴', icon: '🧒🧒' }
                 ],
                 sentences: [
-                    { parts: ['他们', '是', '我的', '朋友。'], colors: ['bg-blue-400', 'bg-pink-400', 'bg-yellow-500', 'bg-green-400'] },
                     { parts: ['大家', '一起排队，', '轮流等待。'], colors: ['bg-red-400', 'bg-orange-400', 'bg-yellow-400'] },
-                    { parts: ['我们', '一起玩耍，', '学习', '分享和拥抱。'], colors: ['bg-green-400', 'bg-blue-400', 'bg-indigo-400', 'bg-purple-400'] },
-                    { parts: ['我和他', '是', '好朋友。'], colors: ['bg-indigo-400', 'bg-pink-400', 'bg-teal-400'] },
-                    { parts: ['我们', '是', '好朋友。'], colors: ['bg-orange-400', 'bg-blue-400', 'bg-pink-400'] },
-                    { parts: ['大家', '一起玩耍', '真开心。'], colors: ['bg-green-400', 'bg-red-400', 'bg-orange-400'] }
+                    { parts: ['我们', '一起玩耍，', '学习', '分享和拥抱。'], colors: ['bg-green-400', 'bg-blue-400', 'bg-indigo-400', 'bg-purple-400'] }
                 ],
-                radical: { char: '王', match: ['玩', '环', '现', '珠', '班', '球'], fail: ['打', '招', '呼', '友', '等', '开'] }
+                radical: [{ char: '王', match: ['玩', '环', '现', '珠', '班', '球'], fail: ['打', '招', '呼', '友', '等', '开'] }]
+            },
+            3: {
+                title: "第三单元 (上)：家庭成员",
+                vocab: [
+                    { word: '爷爷', icon: '👴🪴' }, { word: '奶奶', icon: '👵🚿' }, { word: '外公', icon: '👴📰' }, 
+                    { word: '外婆', icon: '👵🥣' }, { word: '爸爸', icon: '👨🚗' }, { word: '妈妈', icon: '👩🍳' }, 
+                    { word: '哥哥', icon: '👦💐' }, { word: '姐姐', icon: '👧🥛' }, { word: '弟弟', icon: '👦📚' }, 
+                    { word: '妹妹', icon: '👧🍚' }, { word: '洗碗', icon: '🥣🧼' }, { word: '洗车', icon: '🚗🧼' }, { word: '洗杯', icon: '🥛🧼' }
+                ],
+                sentences: [
+                    { parts: ['爷爷', '在', '种花。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-green-400'] },
+                    { parts: ['奶奶', '在', '浇花。'], colors: ['bg-pink-400', 'bg-orange-400', 'bg-indigo-400'] },
+                    { parts: ['妈妈', '在', '煮菜。'], colors: ['bg-blue-400', 'bg-green-400', 'bg-red-400'] }
+                ],
+                radical: [{ char: '氵', match: ['洗', '浇', '洒', '池', '汽', '汁'], fail: ['爷', '爸', '妈', '姐', '弟', '公'] }]
+            },
+            4: {
+                title: "第三单元 (下)：我的家",
+                vocab: [
+                    { word: '电视机', icon: '📺' }, { word: '电灯', icon: '💡' }, { word: '沙发', icon: '🛋️' }, 
+                    { word: '电话', icon: '☎️' }, { word: '碗', icon: '🥣' }, { word: '锅', icon: '🍳' }, 
+                    { word: '杯', icon: '🥛' }, { word: '桌子', icon: '🍽️' }, { word: '餐椅', icon: '🪑' }, 
+                    { word: '床', icon: '🛏️' }, { word: '被单', icon: '🛌✨' }, { word: '肥皂', icon: '🧼' }, 
+                    { word: '牙刷', icon: '🪥' }
+                ],
+                sentences: [
+                    { parts: ['弟弟', '在', '浴室', '冲凉。'], colors: ['bg-blue-400', 'bg-red-400', 'bg-green-400', 'bg-yellow-500'] },
+                    { parts: ['妹妹', '在', '卧室', '睡觉。'], colors: ['bg-pink-400', 'bg-blue-400', 'bg-purple-400', 'bg-teal-400'] },
+                    { parts: ['我们', '在', '饭厅', '吃饭。'], colors: ['bg-orange-400', 'bg-indigo-400', 'bg-green-400', 'bg-red-400'] },
+                    { parts: ['妈妈', '在', '厨房里', '煮饭。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-orange-400', 'bg-teal-400'] },
+                    { parts: ['我和家人', '在', '客厅里', '聊天。'], colors: ['bg-indigo-400', 'bg-purple-400', 'bg-pink-400', 'bg-blue-400'] }
+                ],
+                radical: [{ char: '木', match: ['机', '椅', '桌', '校', '样', '林'], fail: ['电', '灯', '沙', '发', '床', '单'] }]
             }
         };
 
@@ -316,7 +352,7 @@
             currentUnit = u;
             document.getElementById('unit-page').classList.add('hidden');
             document.getElementById('main-menu').classList.remove('hidden');
-            document.getElementById('unit-info').innerText = "当前单元：第" + (u === 1 ? "一" : "二") + "单元";
+            document.getElementById('unit-info').innerText = "练习：" + unitData[u].title;
         }
 
         function backToMenu() {
@@ -336,9 +372,19 @@
             document.getElementById('progress-dots').classList.remove('hidden');
             
             const data = unitData[currentUnit];
-            if (mode === 'sentence') { sessionData = [...data.sentences].sort(() => Math.random() - 0.5).slice(0, 5); }
-            else if (mode === 'radical' || mode === 'memory') { sessionData = [1]; }
-            else { sessionData = [...data.vocab].sort(() => Math.random() - 0.5).slice(0, 5); }
+            
+            if (mode === 'memory') {
+                sessionData = Array(5).fill(0).map(() => {
+                    const pool = [...data.vocab].sort(() => Math.random() - 0.5).slice(0, 3);
+                    return pool;
+                });
+            } else if (mode === 'sentence') {
+                sessionData = [...data.sentences].sort(() => Math.random() - 0.5).slice(0, 5); 
+            } else if (mode === 'radical') { 
+                sessionData = [...data.radical]; 
+            } else { 
+                sessionData = [...data.vocab].sort(() => Math.random() - 0.5).slice(0, 5); 
+            }
             renderStep();
         }
 
@@ -350,16 +396,16 @@
             updateDots();
             const current = sessionData[step];
 
-            if (currentMode === 'memory') renderMemoryFlip();
+            if (currentMode === 'memory') renderMemoryFlip(current);
             else if (currentMode === 'circle') renderCircle(current);
             else if (currentMode === 'listening') renderListening(current);
             else if (currentMode === 'sentence') renderSentence(current);
-            else if (currentMode === 'radical') renderRadical();
+            else if (currentMode === 'radical') renderRadical(current);
         }
 
         function updateDots() {
             const dots = document.querySelectorAll('.progress-dot');
-            const total = (currentMode === 'memory' || currentMode === 'radical') ? 1 : 5;
+            const total = sessionData.length;
             dots.forEach((dot, i) => {
                 dot.classList.remove('dot-active', 'dot-done', 'hidden');
                 if (i >= total) dot.classList.add('hidden');
@@ -372,31 +418,29 @@
             successAudio.currentTime = 0; successAudio.play().catch(()=>{});
             const bar = document.getElementById('auto-next-bar');
             bar.style.transition = 'none'; bar.style.width = '0%';
-            setTimeout(()=>{ bar.style.transition = 'width 1.5s linear'; bar.style.width = '100%'; }, 10);
+            // 加速切换逻辑
+            setTimeout(()=>{ bar.style.transition = 'width 0.6s linear'; bar.style.width = '100%'; }, 10);
             setTimeout(() => { 
                 step++; 
-                const total = (currentMode === 'memory' || currentMode === 'radical') ? 1 : 5; 
-                if (step >= total) showVictory(); else renderStep(); 
-            }, 1600);
+                if (step >= sessionData.length) showVictory(); else renderStep(); 
+            }, 700);
         }
 
         function playError() {
             failAudio.currentTime = 0; failAudio.play().catch(()=>{});
         }
 
-        function renderMemoryFlip() {
+        function renderMemoryFlip(chosenPool) {
             flippedCards = []; matchedCount = 0;
-            const pool = unitData[currentUnit].vocab;
-            const chosen = [...pool].sort(() => Math.random() - 0.5).slice(0, 3);
             const cards = [];
-            chosen.forEach(v => {
+            chosenPool.forEach(v => {
                 cards.push({ type: 'icon', value: v.icon, matchId: v.word });
                 cards.push({ type: 'word', value: v.word, matchId: v.word });
             });
             cards.sort(() => Math.random() - 0.5);
 
             document.getElementById('stage-content').innerHTML = `
-                <div class="grid grid-cols-2 gap-4 p-1 w-full max-w-[300px]">
+                <div class="grid grid-cols-2 gap-4 p-1 w-full max-w-[280px]">
                     ${cards.map((c) => `
                         <div class="memory-card" data-match="${c.matchId}" onclick="handleCardClick(this)">
                             <div class="memory-card-inner">
@@ -406,7 +450,7 @@
                         </div>
                     `).join('')}
                 </div>
-                <p class="text-orange-500 font-bold text-center mt-3 animate-bounce text-lg">配配对吧！</p>
+                <p class="text-orange-500 font-bold text-center mt-3 animate-bounce text-lg">第 ${step+1} 关：配配对吧！</p>
             `;
         }
 
@@ -424,18 +468,17 @@
                     setTimeout(() => {
                         matchedCount++; flippedCards = []; isProcessing = false;
                         if (matchedCount === 3) triggerSuccessFeedback();
-                    }, 600);
+                    }, 400); // 缩短配对成功反馈
                 } else {
                     setTimeout(() => {
                         playError();
                         c1.classList.remove('is-flipped'); c2.classList.remove('is-flipped');
                         flippedCards = []; isProcessing = false;
-                    }, 1000);
+                    }, 800);
                 }
             }
         }
 
-        // --- 排句子：改进版 S 型紧凑路径 ---
         function renderSentence(data) {
             window.currentTempSentence = Array(data.parts.length).fill(null);
             const shuffled = [...data.parts].sort(() => Math.random() - 0.5);
@@ -455,42 +498,29 @@
             for (let i = 0; i < data.parts.length; i += 2) {
                 let rowDirection = (Math.floor(i / 2) % 2 === 0) ? 'flex-row' : 'flex-row-reverse';
                 let rowShift = (Math.floor(i / 2) % 2 === 0) ? 'translate-x-3' : '-translate-x-3';
-                
                 caterpillarHtml += `<div class="flex ${rowDirection} ${rowShift} items-center">`;
-                
-                caterpillarHtml += `
-                    <div class="caterpillar-slot wiggle" id="slot-${i}" onclick="undoSentencePart(${i})" style="animation-delay: ${i * 0.1}s">
-                        ${i + 1}
-                    </div>
-                `;
-                
+                caterpillarHtml += `<div class="caterpillar-slot wiggle" id="slot-${i}" onclick="undoSentencePart(${i})" style="animation-delay: ${i * 0.1}s">${i + 1}</div>`;
                 if (i + 1 < data.parts.length) {
-                    caterpillarHtml += `
-                        <div class="caterpillar-slot wiggle" id="slot-${i+1}" onclick="undoSentencePart(${i+1})" style="animation-delay: ${(i+1) * 0.1}s">
-                            ${i + 2}
-                        </div>
-                    `;
+                    caterpillarHtml += `<div class="caterpillar-slot wiggle" id="slot-${i+1}" onclick="undoSentencePart(${i+1})" style="animation-delay: ${(i+1) * 0.1}s">${i + 2}</div>`;
                 }
-                
                 caterpillarHtml += `</div>`;
             }
-            
             caterpillarHtml += `</div></div>`;
 
             document.getElementById('stage-content').innerHTML = `
-                <div class="w-full flex flex-col items-center space-y-6">
+                <div class="w-full flex flex-col items-center space-y-4">
                     <div class="w-full bg-blue-50/40 rounded-[2.5rem] py-4 px-2 border-2 border-dashed border-blue-100 flex justify-center">
                         ${caterpillarHtml}
                     </div>
-                    <div class="flex flex-wrap gap-3 justify-center w-full px-2 max-h-[30vh] overflow-y-auto">
+                    <div class="flex flex-wrap gap-2.5 justify-center w-full px-2 max-h-[35vh] overflow-y-auto no-scrollbar">
                         ${shuffled.map((word, idx) => `
                             <button id="sentence-btn-${idx}" onclick="handleSentenceClick(${idx}, '${word}', '${data.parts.join('')}')" 
-                                    class="px-5 py-3 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-2xl text-lg shadow-lg active:scale-90 transition">
+                                    class="px-4 py-2 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-2xl text-base shadow-md active:scale-90 transition">
                                 ${word}
                             </button>
                         `).join('')}
                     </div>
-                    <p class="text-xs text-blue-300">点击毛毛虫身上的字可以放回哦！</p>
+                    <p class="text-[10px] text-blue-300">点击毛毛虫身上的字可以拿回来重新排！</p>
                 </div>
             `;
         }
@@ -498,24 +528,17 @@
         function handleSentenceClick(btnIdx, word, full) {
             if (isProcessing) return;
             speak(word);
-            
             const emptyIdx = window.currentTempSentence.findIndex(s => s === null);
             if (emptyIdx === -1) return;
-
             const slot = document.getElementById(`slot-${emptyIdx}`);
             const btn = document.getElementById(`sentence-btn-${btnIdx}`);
             const colorClass = Array.from(btn.classList).find(c => c.startsWith('bg-'));
-            
-            slot.innerText = word; 
-            slot.classList.add('filled', colorClass);
-            slot.dataset.btnRef = btnIdx; 
+            slot.innerText = word; slot.classList.add('filled', colorClass); slot.dataset.btnRef = btnIdx; 
             btn.classList.add('invisible', 'pointer-events-none');
-            
             window.currentTempSentence[emptyIdx] = word;
-
             if (window.currentTempSentence.filter(x => x !== null).join('') === full) {
                 isProcessing = true;
-                setTimeout(() => { speak(full, () => triggerSuccessFeedback()); }, 800);
+                setTimeout(() => { speak(full, () => triggerSuccessFeedback()); }, 600);
             }
         }
 
@@ -523,17 +546,13 @@
             if (isProcessing) return;
             const slot = document.getElementById(`slot-${slotIdx}`);
             if (!slot.classList.contains('filled')) return;
-            
             const btnIdx = slot.dataset.btnRef;
             const btn = document.getElementById(`sentence-btn-${btnIdx}`);
-            
             speak("拿回来");
             btn.classList.remove('invisible', 'pointer-events-none');
-            
             slot.innerText = slotIdx + 1;
             const colorClass = Array.from(slot.classList).find(c => c.startsWith('bg-'));
             slot.classList.remove('filled', colorClass);
-            
             window.currentTempSentence[slotIdx] = null;
         };
 
@@ -577,7 +596,7 @@
 
             document.getElementById('stage-content').innerHTML = `
                 <div class="flex flex-col items-center w-full space-y-8">
-                    <button onclick="speak('${target.word}')" class="w-36 h-36 bg-blue-500 text-white rounded-full text-8xl shadow-xl active:scale-90 flex items-center justify-center border-4 border-white">🔊</button>
+                    <button onclick="speak('${target.word}')" class="w-32 h-32 bg-blue-500 text-white rounded-full text-7xl shadow-xl active:scale-90 flex items-center justify-center border-4 border-white">🔊</button>
                     <div class="grid grid-cols-1 gap-4 w-full px-4">
                         ${options.map(opt => `
                             <button onclick="checkListening(this, '${opt.word}', '${target.word}')" class="py-6 text-2xl font-bold bg-white border-4 border-blue-50 rounded-[2rem] shadow-md">
@@ -602,22 +621,16 @@
             }
         }
 
-        function renderRadical() {
+        function renderRadical(rData) {
             radicalFound = 0;
-            const rData = unitData[currentUnit].radical;
-            const pool = rData.match.map(c => ({char: c, isMatch: true}))
-                          .concat(rData.fail.map(c => ({char: c, isMatch: false})))
-                          .sort(() => Math.random() - 0.5);
+            const pool = rData.match.map(c => ({char: c, isMatch: true})).concat(rData.fail.map(c => ({char: c, isMatch: false}))).sort(() => Math.random() - 0.5);
 
             document.getElementById('stage-content').innerHTML = `
                 <div class="text-center w-full space-y-8">
                     <p class="text-xl font-bold">找出带 <span class="text-5xl font-black text-red-500 mx-1">“${rData.char}”</span> 的字：</p>
                     <div class="grid grid-cols-3 gap-4 justify-items-center px-4">
                         ${pool.map(r => `
-                            <button onclick="handleRadicalClick(this, ${r.isMatch})" 
-                                    class="w-24 h-24 text-4xl font-bold bg-white border-2 border-pink-100 rounded-full flex items-center justify-center shadow-md active:scale-95 transition">
-                                ${r.char}
-                            </button>
+                            <button onclick="handleRadicalClick(this, ${r.isMatch})" class="w-20 h-20 text-3xl font-bold bg-white border-2 border-pink-100 rounded-full flex items-center justify-center shadow-md active:scale-95 transition">${r.char}</button>
                         `).join('')}
                     </div>
                     <div id="radical-status" class="text-xl text-pink-500 font-bold py-3 px-10 bg-pink-50 rounded-full inline-block">已找到：0 / 6</div>
@@ -641,12 +654,12 @@
         }
 
         function showVictory() {
-            speak("你真棒！");
+            speak("你真棒！挑战成功！");
             document.getElementById('stage-content').innerHTML = `
                 <div class="text-center p-4">
-                    <div class="text-[9rem] animate-bounce mb-6">🏆</div>
-                    <h2 class="text-4xl font-bold text-orange-500 mb-10">挑战成功！</h2>
-                    <button onclick="backToMenu()" class="px-14 py-6 bg-yellow-400 text-blue-900 text-3xl font-bold rounded-[3rem] shadow-lg active:scale-95 transition">返回主页</button>
+                    <div class="text-[8rem] animate-bounce mb-6">🏆</div>
+                    <h2 class="text-3xl font-bold text-orange-500 mb-10">挑战成功！</h2>
+                    <button onclick="backToMenu()" class="px-14 py-4 bg-yellow-400 text-blue-900 text-2xl font-bold rounded-[2rem] shadow-lg active:scale-95 transition">返回主页</button>
                 </div>
             `;
             document.getElementById('progress-dots').classList.add('hidden');
