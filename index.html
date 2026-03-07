@@ -325,11 +325,25 @@
         const successAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
         const failAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/951/951-preview.mp3');
 
+        // 优化发声函数，确保兼容性
         function speak(text, callback) {
+            if (!text) return;
+            // 先停止当前所有语音，清空队列
             window.speechSynthesis.cancel();
+            
+            // 创建新的语音对象
             const utter = new SpeechSynthesisUtterance(text);
-            utter.lang = 'zh-CN'; utter.rate = 0.6;
-            if (callback) utter.onend = callback;
+            utter.lang = 'zh-CN'; 
+            utter.rate = 0.65; // 稍微调快一点点，更自然
+            utter.pitch = 1.1; // 稍微调高一点点，适合小朋友
+            
+            if (callback) {
+                utter.onend = () => callback();
+                // 某些浏览器 onend 不触发的兜底方案
+                setTimeout(() => { if (isProcessing) utter.onend(); }, 3000);
+            }
+            
+            // 执行播放
             window.speechSynthesis.speak(utter);
         }
 
@@ -341,6 +355,8 @@
         }
 
         function enterUnitSelection() {
+            // 解锁语音权限：在用户第一次点击时播放一段空音
+            speak(' ');
             document.getElementById('start-page').classList.add('hidden');
             document.getElementById('main-menu').classList.add('hidden');
             document.getElementById('unit-page').classList.remove('hidden');
@@ -366,6 +382,8 @@
 
         function setupGame(mode) {
             currentMode = mode; step = 0; bgMusic.pause();
+            // 解锁语音权限
+            speak(' ');
             document.getElementById('main-menu').classList.add('hidden');
             document.getElementById('stage').classList.remove('hidden');
             document.getElementById('stage-footer').classList.remove('hidden');
@@ -596,7 +614,8 @@
 
             document.getElementById('stage-content').innerHTML = `
                 <div class="flex flex-col items-center w-full space-y-8">
-                    <button onclick="speak('${target.word}')" class="w-32 h-32 bg-blue-500 text-white rounded-full text-7xl shadow-xl active:scale-90 flex items-center justify-center border-4 border-white">🔊</button>
+                    <button id="speaker-btn" onclick="speak('${target.word}')" class="w-36 h-36 bg-blue-500 text-white rounded-full text-8xl shadow-xl active:scale-90 flex items-center justify-center border-4 border-white animate-pulse">🔊</button>
+                    <p class="text-blue-400 font-bold">点击喇叭听声音</p>
                     <div class="grid grid-cols-1 gap-4 w-full px-4">
                         ${options.map(opt => `
                             <button onclick="checkListening(this, '${opt.word}', '${target.word}')" class="py-6 text-2xl font-bold bg-white border-4 border-blue-50 rounded-[2rem] shadow-md">
@@ -606,7 +625,8 @@
                     </div>
                 </div>
             `;
-            speak(target.word);
+            // 尝试自动播放
+            setTimeout(() => speak(target.word), 300);
         }
 
         function checkListening(btn, selected, correct) {
