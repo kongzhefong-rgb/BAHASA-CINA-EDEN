@@ -11,7 +11,7 @@
         body {
             font-family: 'Noto Sans SC', sans-serif;
             background-color: #fff9ed;
-            overflow-x: hidden;
+            overflow: hidden;
             touch-action: manipulation;
             user-select: none;
         }
@@ -19,11 +19,14 @@
         /* 3D 翻牌动画 */
         .memory-card {
             perspective: 1000px;
-            width: 85px;
-            height: 115px;
+            width: 70px;
+            height: 95px;
             cursor: pointer;
         }
         @media (min-width: 640px) {
+            .memory-card { width: 110px; height: 140px; }
+        }
+        @media (min-width: 1024px) {
             .memory-card { width: 130px; height: 160px; }
         }
         .memory-card-inner {
@@ -42,29 +45,33 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid #fde68a;
-            box-shadow: 0 6px 12px -2px rgba(0,0,0,0.1);
+            border: 3px solid #fde68a;
+            box-shadow: 0 4px 8px -2px rgba(0,0,0,0.1);
         }
         .card-front {
             background-color: #fbbf24;
             color: white;
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: bold;
         }
         .card-back {
             background-color: white;
             transform: rotateY(180deg);
-            font-size: 2.5rem;
+            font-size: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .card-front { font-size: 3rem; }
+            .card-back { font-size: 2.5rem; }
         }
 
-        /* 毛毛虫头像绘制 */
+        /* 毛毛虫头像绘制 - 响应式缩小 */
         .caterpillar-head-container {
-            width: 95px;
-            height: 105px;
+            width: 65px;
+            height: 75px;
             position: relative;
             z-index: 30;
             flex-shrink: 0;
@@ -72,11 +79,14 @@
             align-items: center;
             justify-content: center;
         }
+        @media (min-width: 640px) {
+            .caterpillar-head-container { width: 95px; height: 105px; }
+        }
         .caterpillar-face {
-            width: 85px;
-            height: 85px;
+            width: 60px;
+            height: 60px;
             background-color: #fb923c; 
-            border: 4px solid #ea580c;
+            border: 3px solid #ea580c;
             border-radius: 50%;
             position: relative;
             display: flex;
@@ -84,65 +94,83 @@
             align-items: center;
             justify-content: center;
         }
+        @media (min-width: 640px) {
+            .caterpillar-face { width: 85px; height: 85px; border-width: 4px; }
+        }
         .antenna {
             position: absolute;
-            top: -18px;
-            width: 4px;
-            height: 24px;
+            top: -12px;
+            width: 3px;
+            height: 18px;
             background-color: #4b5563;
         }
         .antenna::after {
             content: '';
             position: absolute;
-            top: -6px;
-            left: -4px;
-            width: 12px;
-            height: 12px;
+            top: -4px;
+            left: -3px;
+            width: 8px;
+            height: 8px;
             background-color: #4b5563;
             border-radius: 50%;
         }
-        .antenna-l { left: 25px; transform: rotate(-25deg); }
-        .antenna-r { right: 25px; transform: rotate(25deg); }
+        @media (min-width: 640px) {
+            .antenna { top: -18px; width: 4px; height: 24px; }
+            .antenna::after { top: -6px; left: -4px; width: 12px; height: 12px; }
+        }
+        .antenna-l { left: 18px; transform: rotate(-25deg); }
+        .antenna-r { right: 18px; transform: rotate(25deg); }
+        @media (min-width: 640px) {
+            .antenna-l { left: 25px; }
+            .antenna-r { right: 25px; }
+        }
         
         .eye-container {
             display: flex;
-            gap: 14px;
-            margin-top: -5px;
+            gap: 8px;
+            margin-top: -3px;
         }
         .eye {
-            width: 16px;
-            height: 20px;
+            width: 12px;
+            height: 15px;
             background: white;
-            border: 2px solid #374151;
+            border: 1.5px solid #374151;
             border-radius: 50%;
             position: relative;
         }
+        @media (min-width: 640px) {
+            .eye { width: 16px; height: 20px; border-width: 2px; }
+            .eye-container { gap: 14px; }
+        }
         .pupil {
             position: absolute;
-            width: 7px;
-            height: 7px;
+            width: 5px;
+            height: 5px;
             background: black;
             border-radius: 50%;
-            bottom: 3px;
+            bottom: 2px;
             left: 50%;
             transform: translateX(-50%);
         }
         .smile {
-            width: 34px;
-            height: 16px;
-            border-bottom: 4px solid #374151;
-            border-radius: 0 0 17px 17px;
-            margin-top: 4px;
+            width: 24px;
+            height: 12px;
+            border-bottom: 2.5px solid #374151;
+            border-radius: 0 0 12px 12px;
+            margin-top: 2px;
+        }
+        @media (min-width: 640px) {
+            .smile { width: 34px; height: 16px; border-bottom-width: 4px; margin-top: 4px; }
         }
 
         /* 毛毛虫身体槽位 */
         .caterpillar-slot {
-            width: 90px;
-            height: 90px;
+            width: 65px;
+            height: 60px;
             border-radius: 50%;
-            border: 3px solid #e2e8f0;
+            border: 2px solid #e2e8f0;
             background-color: #ffffff;
-            margin-left: -18px;
+            margin-left: -12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -151,9 +179,12 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             z-index: 10;
-            padding: 0 12px;
-            font-size: 1.1rem;
+            padding: 0 8px;
+            font-size: 0.9rem;
             text-align: center;
+        }
+        @media (min-width: 640px) {
+            .caterpillar-slot { width: 90px; height: 85px; margin-left: -18px; font-size: 1.1rem; border-width: 3px; }
         }
 
         .caterpillar-slot.filled {
@@ -169,16 +200,17 @@
 
         @keyframes wiggle {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-8px); }
         }
 
         .progress-dot {
-            width: 15px;
-            height: 15px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background-color: #e2e8f0;
             transition: all 0.3s ease;
         }
+        @media (min-width: 640px) { .progress-dot { width: 15px; height: 15px; } }
         .dot-active { background-color: #fbbf24; transform: scale(1.4); }
         .dot-done { background-color: #10b981; }
 
@@ -216,56 +248,56 @@
         }
     </style>
 </head>
-<body class="p-2 md:p-6">
+<body class="p-2 md:p-6 flex items-center justify-center min-h-screen">
 
     <!-- 自动跳转进度条 -->
     <div id="auto-next-bar" class="loading-bar"></div>
 
-    <div id="app" class="max-w-4xl mx-auto bg-white rounded-[3rem] shadow-2xl overflow-hidden min-h-[92vh] flex flex-col relative border-8 border-yellow-100">
+    <div id="app" class="w-full max-w-4xl bg-white rounded-[2.5rem] md:rounded-[3rem] shadow-2xl overflow-hidden h-[95vh] flex flex-col relative border-4 md:border-8 border-yellow-100">
         
-        <header id="top-bar" class="bg-gradient-to-b from-yellow-50 to-white p-5 text-center">
-            <h1 class="text-3xl font-bold text-blue-900 mb-2">🍭 华语学习乐园</h1>
-            <div id="progress-dots" class="hidden flex justify-center gap-4">
+        <header id="top-bar" class="bg-gradient-to-b from-yellow-50 to-white p-3 md:p-5 text-center flex-shrink-0">
+            <h1 class="text-xl md:text-3xl font-bold text-blue-900 mb-1">🍭 华语学习乐园</h1>
+            <div id="progress-dots" class="hidden flex justify-center gap-2 md:gap-4">
                 <div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div>
             </div>
         </header>
 
-        <div id="start-page" class="flex-grow flex flex-col items-center justify-center p-10 space-y-8">
-            <div class="text-[12rem] animate-bounce">🏫</div>
-            <h2 class="text-4xl font-bold text-blue-800">准备好开始了吗？</h2>
-            <button onclick="enterMenu()" class="px-16 py-6 bg-orange-400 text-white text-3xl font-bold rounded-full shadow-xl hover:bg-orange-500 active:scale-95 transition">点击进入</button>
+        <div id="start-page" class="flex-grow flex flex-col items-center justify-center p-6 space-y-4 md:space-y-8">
+            <div class="text-[6rem] md:text-[12rem] animate-bounce">🏫</div>
+            <h2 class="text-2xl md:text-4xl font-bold text-blue-800">准备好开始了吗？</h2>
+            <button onclick="enterMenu()" class="px-10 md:px-16 py-4 md:py-6 bg-orange-400 text-white text-xl md:text-3xl font-bold rounded-full shadow-xl hover:bg-orange-500 active:scale-95 transition">点击进入</button>
         </div>
 
-        <nav id="main-menu" class="hidden p-8 grid grid-cols-2 md:grid-cols-3 gap-8 flex-grow content-center">
-            <button onclick="setupGame('memory')" class="p-6 bg-orange-50 border-b-8 border-orange-200 rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
-                <div class="text-5xl mb-4">🎴</div>
-                <div class="font-bold text-orange-800 text-xl">翻一翻</div>
+        <nav id="main-menu" class="hidden p-4 md:p-8 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 flex-grow content-center">
+            <button onclick="setupGame('memory')" class="p-4 md:p-6 bg-orange-50 border-b-4 md:border-b-8 border-orange-200 rounded-[1.5rem] md:rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
+                <div class="text-3xl md:text-5xl mb-2 md:mb-4">🎴</div>
+                <div class="font-bold text-orange-800 text-lg md:text-xl">翻一翻</div>
             </button>
-            <button onclick="setupGame('circle')" class="p-6 bg-green-50 border-b-8 border-green-200 rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
-                <div class="text-5xl mb-4">⭕</div>
-                <div class="font-bold text-green-800 text-xl">看图圈词</div>
+            <button onclick="setupGame('circle')" class="p-4 md:p-6 bg-green-50 border-b-4 md:border-b-8 border-green-200 rounded-[1.5rem] md:rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
+                <div class="text-3xl md:text-5xl mb-2 md:mb-4">⭕</div>
+                <div class="font-bold text-green-800 text-lg md:text-xl">看图圈词</div>
             </button>
-            <button onclick="setupGame('listening')" class="p-6 bg-blue-50 border-b-8 border-blue-200 rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
-                <div class="text-5xl mb-4">👂</div>
-                <div class="font-bold text-blue-800 text-xl">听音辨字</div>
+            <button onclick="setupGame('listening')" class="p-4 md:p-6 bg-blue-50 border-b-4 md:border-b-8 border-blue-200 rounded-[1.5rem] md:rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
+                <div class="text-3xl md:text-5xl mb-2 md:mb-4">👂</div>
+                <div class="font-bold text-blue-800 text-lg md:text-xl">听音辨字</div>
             </button>
-            <button onclick="setupGame('sentence')" class="p-6 bg-purple-50 border-b-8 border-purple-200 rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
-                <div class="text-5xl mb-4">🐛</div>
-                <div class="font-bold text-purple-800 text-xl">排句子</div>
+            <button onclick="setupGame('sentence')" class="p-4 md:p-6 bg-purple-50 border-b-4 md:border-b-8 border-purple-200 rounded-[1.5rem] md:rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
+                <div class="text-3xl md:text-5xl mb-2 md:mb-4">🐛</div>
+                <div class="font-bold text-purple-800 text-lg md:text-xl">排句子</div>
             </button>
-            <button onclick="setupGame('radical')" class="p-6 bg-pink-50 border-b-8 border-pink-200 rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
-                <div class="text-5xl mb-4">🏛️</div>
-                <div class="font-bold text-pink-800 text-xl">部首寻宝</div>
+            <button onclick="setupGame('radical')" class="p-4 md:p-6 bg-pink-50 border-b-4 md:border-b-8 border-pink-200 rounded-[1.5rem] md:rounded-[2rem] text-center hover:scale-105 transition shadow-sm">
+                <div class="text-3xl md:text-5xl mb-2 md:mb-4">🏛️</div>
+                <div class="font-bold text-pink-800 text-lg md:text-xl">部首寻宝</div>
             </button>
             <div class="flex items-center justify-center">
-                <button onclick="toggleMusic()" id="music-btn" class="text-4xl p-6 bg-gray-50 rounded-full shadow-inner border-2 border-gray-100">🔇</button>
+                <button onclick="toggleMusic()" id="music-btn" class="text-3xl md:text-4xl p-4 md:p-6 bg-gray-50 rounded-full shadow-inner border-2 border-gray-100">🔇</button>
             </div>
         </nav>
 
-        <div id="stage" class="hidden flex-grow flex flex-col p-4 relative overflow-hidden">
-            <div id="stage-content" class="flex-grow flex flex-col items-center justify-center min-h-[450px]"></div>
-            <div class="p-6 text-center">
-                <button onclick="backToMenu()" class="text-gray-400 font-bold hover:text-gray-600 transition text-lg">回到主页</button>
+        <div id="stage" class="hidden flex-grow flex flex-col p-2 md:p-4 relative overflow-hidden">
+            <div id="stage-content" class="flex-grow flex flex-col items-center justify-center overflow-y-auto"></div>
+            <div class="p-3 md:p-6 text-center flex-shrink-0">
+                <button onclick="backToMenu()" class="text-gray-400 font-bold hover:text-gray-600 transition text-base md:text-lg">回到主页</button>
             </div>
         </div>
     </div>
@@ -323,15 +355,14 @@
         let matchedCount = 0;
         let isProcessing = false;
 
-        // --- 音效文件 (使用开源库) ---
+        // --- 音效文件 ---
         const successAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
-        const clickAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3');
 
         function speak(text, callback) {
             window.speechSynthesis.cancel();
             const utter = new SpeechSynthesisUtterance(text);
             utter.lang = 'zh-CN';
-            utter.rate = 0.5;
+            utter.rate = 0.6;
             if (callback) { utter.onend = callback; }
             window.speechSynthesis.speak(utter);
         }
@@ -400,12 +431,10 @@
             });
         }
 
-        // --- 核心反馈逻辑 (不再使用弹窗) ---
         function triggerSuccessFeedback() {
             successAudio.currentTime = 0;
             successAudio.play().catch(()=>{});
             
-            // 展示进度条，告知用户即将跳转
             const bar = document.getElementById('auto-next-bar');
             bar.style.transition = 'none';
             bar.style.width = '0%';
@@ -414,7 +443,6 @@
                 bar.style.width = '100%';
             }, 10);
 
-            // 延迟后自动进入下一步
             setTimeout(() => {
                 handleAutoNext();
             }, 1600);
@@ -442,7 +470,7 @@
             cards.sort(() => Math.random() - 0.5);
 
             document.getElementById('stage-content').innerHTML = `
-                <div class="grid grid-cols-4 gap-4 p-4 max-w-2xl mx-auto">
+                <div class="grid grid-cols-4 gap-2 md:gap-4 p-2 md:p-4 max-w-full">
                     ${cards.map((c, i) => `
                         <div class="memory-card" data-match="${c.matchId}" onclick="handleCardClick(this)">
                             <div class="memory-card-inner">
@@ -452,7 +480,7 @@
                         </div>
                     `).join('')}
                 </div>
-                <p class="mt-8 text-orange-600 font-bold text-2xl text-center">翻开两张，把它们配成对！</p>
+                <p class="mt-4 md:mt-8 text-orange-600 font-bold text-lg md:text-2xl text-center">把它们配成对！</p>
             `;
         }
 
@@ -487,11 +515,11 @@
         // --- 看图圈词 ---
         function renderCircle(target) {
             document.getElementById('stage-content').innerHTML = `
-                <div class="flex flex-col items-center">
-                    <div class="text-[12rem] mb-12 p-10 bg-yellow-50 rounded-full border-4 border-dashed border-yellow-200 shadow-inner flex items-center justify-center">${target.icon}</div>
-                    <div class="grid grid-cols-1 gap-6 w-full px-12">
+                <div class="flex flex-col items-center w-full px-4">
+                    <div class="text-7xl md:text-[12rem] mb-6 md:mb-12 p-6 md:p-10 bg-yellow-50 rounded-full border-2 md:border-4 border-dashed border-yellow-200 shadow-inner flex items-center justify-center">${target.icon}</div>
+                    <div class="grid grid-cols-1 gap-3 md:gap-6 w-full max-w-lg">
                         ${vocab.filter(v => v.word !== target.word).sort(() => Math.random() - 0.5).slice(0, 2).concat(target).sort(() => Math.random() - 0.5).map(opt => `
-                            <button onclick="checkCircle(this, '${opt.word}', '${target.word}')" class="relative py-6 text-4xl font-bold bg-white border-4 border-gray-100 rounded-[2rem] active:scale-95 transition">
+                            <button onclick="checkCircle(this, '${opt.word}', '${target.word}')" class="relative py-4 md:py-6 text-2xl md:text-4xl font-bold bg-white border-2 md:border-4 border-gray-100 rounded-[1.5rem] md:rounded-[2rem] active:scale-95 transition">
                                 ${opt.word}
                                 <div class="circle-box hidden absolute inset-0"><svg class="circle-svg" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="46" ry="22" class="circle-path" /></svg></div>
                             </button>
@@ -517,11 +545,11 @@
         // --- 听音辨字 ---
         function renderListening(target) {
             document.getElementById('stage-content').innerHTML = `
-                <div class="flex flex-col items-center w-full">
-                    <button onclick="speak('${target.word}')" class="w-48 h-48 bg-blue-500 text-white rounded-full text-9xl mb-12 shadow-xl hover:scale-105 transition active:scale-90">🔊</button>
-                    <div class="grid grid-cols-1 gap-6 w-full px-12">
+                <div class="flex flex-col items-center w-full px-4">
+                    <button onclick="speak('${target.word}')" class="w-32 h-32 md:w-48 md:h-48 bg-blue-500 text-white rounded-full text-6xl md:text-9xl mb-6 md:mb-12 shadow-xl hover:scale-105 transition active:scale-90 flex items-center justify-center">🔊</button>
+                    <div class="grid grid-cols-1 gap-3 md:gap-6 w-full max-w-lg">
                         ${vocab.filter(v => v.word !== target.word).sort(() => Math.random() - 0.5).slice(0, 2).concat(target).sort(() => Math.random() - 0.5).map(opt => `
-                            <button onclick="checkListening(this, '${opt.word}', '${target.word}')" class="py-6 text-4xl font-bold bg-white border-4 border-blue-50 rounded-[2rem] shadow-sm">
+                            <button onclick="checkListening(this, '${opt.word}', '${target.word}')" class="py-4 md:py-6 text-2xl md:text-4xl font-bold bg-white border-2 md:border-4 border-blue-50 rounded-[1.5rem] md:rounded-[2rem] shadow-sm">
                                 ${opt.word}
                             </button>
                         `).join('')}
@@ -548,16 +576,16 @@
             window.currentTempSentence = [];
             const shuffled = [...data.parts].sort(() => Math.random() - 0.5);
             document.getElementById('stage-content').innerHTML = `
-                <div class="w-full px-6 text-center flex flex-col items-center">
-                    <div id="caterpillar-container" class="min-h-[180px] w-full bg-blue-50 rounded-[3rem] p-10 mb-12 flex flex-wrap gap-0 justify-center items-center border-4 border-dashed border-blue-200">
+                <div class="w-full px-4 text-center flex flex-col items-center">
+                    <div id="caterpillar-container" class="min-h-[100px] md:min-h-[180px] w-full bg-blue-50 rounded-[2rem] md:rounded-[3rem] p-4 md:p-10 mb-6 md:mb-12 flex flex-wrap gap-0 justify-center items-center border-2 md:border-4 border-dashed border-blue-200">
                         <div class="caterpillar-head-container wiggle">
                             <div class="antenna antenna-l"></div><div class="antenna antenna-r"></div>
                             <div class="caterpillar-face"><div class="eye-container"><div class="eye"><div class="pupil"></div></div><div class="eye"><div class="pupil"></div></div></div><div class="smile"></div></div>
                         </div>
                         ${data.parts.map((_, i) => `<div class="caterpillar-slot wiggle" id="slot-${i}" style="animation-delay: ${i * 0.2}s">${i + 1}</div>`).join('')}
                     </div>
-                    <div class="flex flex-wrap gap-6 justify-center">
-                        ${shuffled.map(word => `<button onclick="handleSentenceClick(this, '${word}', '${data.parts.join('')}')" class="word-tag px-10 py-5 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-2xl text-3xl active:scale-90 transition transform hover:scale-105 shadow-lg">${word}</button>`).join('')}
+                    <div class="flex flex-wrap gap-3 md:gap-6 justify-center">
+                        ${shuffled.map(word => `<button onclick="handleSentenceClick(this, '${word}', '${data.parts.join('')}')" class="word-tag px-6 md:px-10 py-3 md:py-5 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-xl md:rounded-2xl text-xl md:text-3xl active:scale-90 transition transform hover:scale-105 shadow-lg">${word}</button>`).join('')}
                     </div>
                 </div>
             `;
@@ -590,10 +618,10 @@
             radicalFound = 0;
             const pool = [...radicalList].sort(() => Math.random() - 0.5);
             document.getElementById('stage-content').innerHTML = `
-                <div class="text-center px-6">
-                    <p class="text-3xl mb-10">找出所有带 <span class="text-6xl font-bold text-red-500 mx-4">“宀”</span> 的字：</p>
-                    <div class="grid grid-cols-3 gap-8">${pool.map(r => `<button onclick="handleRadicalClick(this, ${r.isMatch})" class="w-28 h-28 text-5xl font-bold bg-white border-4 border-pink-100 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition">${r.char}</button>`).join('')}</div>
-                    <div id="radical-status" class="mt-14 text-3xl text-pink-500 font-bold py-5 px-12 bg-pink-50 rounded-full inline-block shadow-inner">已找到：0 / 6</div>
+                <div class="text-center px-4">
+                    <p class="text-xl md:text-3xl mb-6 md:mb-10">找出带 <span class="text-4xl md:text-6xl font-bold text-red-500 mx-2">“宀”</span> 的字：</p>
+                    <div class="grid grid-cols-3 gap-4 md:gap-8">${pool.map(r => `<button onclick="handleRadicalClick(this, ${r.isMatch})" class="w-20 h-20 md:w-28 md:h-28 text-3xl md:text-5xl font-bold bg-white border-2 md:border-4 border-pink-100 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition">${r.char}</button>`).join('')}</div>
+                    <div id="radical-status" class="mt-8 md:mt-14 text-xl md:text-3xl text-pink-500 font-bold py-3 md:py-5 px-8 md:px-12 bg-pink-50 rounded-full inline-block shadow-inner">已找到：0 / 6</div>
                 </div>
             `;
         }
@@ -619,10 +647,10 @@
         function showVictory() {
             speak("恭喜你！完成练习啦！");
             document.getElementById('stage-content').innerHTML = `
-                <div class="text-center">
-                    <div class="text-[15rem] animate-bounce mb-10">🏆</div>
-                    <h2 class="text-5xl font-bold text-orange-500 mb-12">你真棒！</h2>
-                    <button onclick="backToMenu()" class="px-20 py-6 bg-yellow-400 text-blue-900 text-4xl font-bold rounded-[3rem] shadow-2xl hover:scale-105 transition">回到主页</button>
+                <div class="text-center p-4">
+                    <div class="text-[8rem] md:text-[15rem] animate-bounce mb-6 md:mb-10">🏆</div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-orange-500 mb-8 md:mb-12">你真棒！</h2>
+                    <button onclick="backToMenu()" class="px-12 md:px-20 py-4 md:py-6 bg-yellow-400 text-blue-900 text-2xl md:text-4xl font-bold rounded-[2rem] md:rounded-[3rem] shadow-2xl hover:scale-105 transition">回到主页</button>
                 </div>
             `;
             document.getElementById('progress-dots').classList.add('hidden');
