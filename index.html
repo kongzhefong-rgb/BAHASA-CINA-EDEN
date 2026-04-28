@@ -158,6 +158,22 @@
             overflow-y: auto;
             position: relative;
         }
+
+        /* 全屏按钮悬浮 */
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 100;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -166,6 +182,13 @@
 
     <div id="app" class="w-full max-md bg-white shadow-2xl overflow-hidden relative border-x-4 border-yellow-100 mx-auto">
         
+        <!-- 全屏控制 -->
+        <button onclick="toggleFullscreen()" class="fullscreen-btn" title="全屏">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+        </button>
+
         <header id="top-bar" class="bg-gradient-to-b from-yellow-50 to-white pt-5 pb-3 px-4 text-center flex-shrink-0 z-50">
             <h1 class="text-xl font-bold text-blue-900 mb-2">🍭 华语学习乐园</h1>
             <div id="progress-dots" class="hidden flex justify-center gap-1.5">
@@ -301,7 +324,8 @@
                     { parts: ['我', '喜欢', '我的', '神奇书包。'], colors: ['bg-pink-400', 'bg-indigo-400', 'bg-yellow-500', 'bg-green-400'] },
                     { parts: ['书包里有', '铅笔、尺', '和剪刀。'], colors: ['bg-red-400', 'bg-blue-400', 'bg-indigo-400'] }
                 ],
-                radical: [{ char: '竹', match: ['笔', '简', '等', '箱', '笑', '答'], fail: ['书', '尺', '刀', '剪', '单'] }]
+                // 修正部首为“竹”字头，对应笔、箱等
+                radical: [{ char: '竹', match: ['笔', '箱', '简', '等', '笑', '答'], fail: ['书', '尺', '刀', '剪', '单'] }]
             }
         };
 
@@ -319,7 +343,18 @@
         let bgMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3'); 
         bgMusic.loop = true; bgMusic.volume = 0.05;
         const successAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
-        const failAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/951/951-preview.mp3');
+        // 短促的“嗒”一声 (Thud/Wood block 声音)
+        const failAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
 
         function speak(text, callback) {
             if (!text) return;
@@ -439,7 +474,10 @@
             }, 700);
         }
 
-        function playError() { failAudio.currentTime = 0; failAudio.play().catch(()=>{}); }
+        function playError() { 
+            failAudio.currentTime = 0; 
+            failAudio.play().catch(()=>{}); 
+        }
 
         function renderMemoryFlip(chosenPool) {
             flippedCards = []; matchedCount = 0;
@@ -577,14 +615,17 @@
             else { playError(); btn.classList.add('border-red-200', 'text-red-300'); }
         }
 
+        // --- 部首寻宝核心逻辑 ---
         function renderRadical(rData) {
             radicalFound = 0;
-            const pool = rData.match.map(c => ({char: c, isMatch: true})).concat(rData.fail.map(c => ({char: c, isMatch: false}))).sort(() => Math.random() - 0.5);
+            const pool = rData.match.map(c => ({char: c, isMatch: true}))
+                              .concat(rData.fail.map(c => ({char: c, isMatch: false})))
+                              .sort(() => Math.random() - 0.5);
             document.getElementById('stage-content').innerHTML = `
                 <div class="text-center w-full space-y-8">
                     <p class="text-xl font-bold">找出带 <span class="text-5xl font-black text-red-500 mx-1">“${rData.char}”</span> 的字：</p>
                     <div class="grid grid-cols-3 gap-4 justify-items-center px-4">
-                        ${pool.map(r => `<button onclick="handleRadicalClick(this, ${r.isMatch})" class="w-20 h-20 text-3xl font-bold bg-white border-2 border-pink-100 rounded-full flex items-center justify-center shadow-md active:scale-95 transition">${r.char}</button>`).join('')}
+                        ${pool.map(r => `<button onclick="handleRadicalClick(this, ${r.isMatch})" class="w-20 h-20 text-3xl font-bold bg-white border-2 border-pink-100 rounded-full flex items-center justify-center shadow-md active:scale-95 transition-all duration-200">${r.char}</button>`).join('')}
                     </div>
                     <div id="radical-status" class="text-xl text-pink-500 font-bold py-3 px-10 bg-pink-50 rounded-full inline-block">已找到：0 / 6</div>
                 </div>
@@ -593,8 +634,31 @@
 
         function handleRadicalClick(btn, isMatch) {
             if (btn.disabled || isProcessing || isTransitioning) return;
-            if (isMatch) { btn.disabled = true; btn.classList.add('bg-green-100', 'border-green-500', 'text-green-700'); radicalFound++; document.getElementById('radical-status').innerText = `已找到：${radicalFound} / 6`; speak(btn.innerText); if (radicalFound >= 6) { isProcessing = true; triggerSuccessFeedback(); } }
-            else { playError(); btn.classList.add('opacity-40', 'bg-gray-100'); }
+            
+            if (isMatch) {
+                // 成功音效
+                successAudio.currentTime = 0;
+                successAudio.play().catch(()=>{});
+                
+                // 变成亮绿色
+                btn.disabled = true;
+                btn.classList.add('bg-green-500', 'text-white', 'border-green-600');
+                btn.classList.remove('border-pink-100');
+                
+                radicalFound++;
+                document.getElementById('radical-status').innerText = `已找到：${radicalFound} / 6`;
+                speak(btn.innerText);
+                
+                if (radicalFound >= 6) {
+                    isProcessing = true;
+                    setTimeout(() => triggerSuccessFeedback(), 300);
+                }
+            } else {
+                // 答错统一响“嗒”音效
+                playError();
+                // 变淡
+                btn.classList.add('opacity-40', 'bg-gray-100');
+            }
         }
 
         function showVictory() {
