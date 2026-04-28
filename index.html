@@ -78,22 +78,22 @@
             padding: 4px;
         }
 
-        /* 毛毛虫头像 - 横向适配 */
+        /* 毛毛虫头像 - 横向适配 (略微增大以匹配更大的身体) */
         .caterpillar-head-container {
-            width: 55px;
-            height: 65px;
+            width: 65px;
+            height: 75px;
             position: relative;
             z-index: 30;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: -8px; 
+            margin-right: -10px; 
         }
         .caterpillar-face {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background-color: #fb923c; 
-            border: 3px solid #ea580c;
+            border: 3.5px solid #ea580c;
             border-radius: 50%;
             position: relative;
             display: flex;
@@ -103,30 +103,30 @@
         }
         .antenna {
             position: absolute;
-            top: -10px;
-            width: 3px;
-            height: 14px;
+            top: -12px;
+            width: 3.5px;
+            height: 16px;
             background-color: #4b5563;
         }
         .antenna::after {
             content: '';
-            position: absolute; top: -4px; left: -2.5px; width: 8px; height: 8px;
+            position: absolute; top: -5px; left: -3px; width: 10px; height: 10px;
             background-color: #4b5563; border-radius: 50%;
         }
-        .antenna-l { left: 14px; transform: rotate(-25deg); }
-        .antenna-r { right: 14px; transform: rotate(25deg); }
+        .antenna-l { left: 16px; transform: rotate(-25deg); }
+        .antenna-r { right: 16px; transform: rotate(25deg); }
         
-        .eye-container { display: flex; gap: 5px; margin-top: -3px; }
-        .eye { width: 9px; height: 13px; background: white; border: 1.5px solid #374151; border-radius: 50%; position: relative; }
-        .pupil { position: absolute; width: 4px; height: 4px; background: black; border-radius: 50%; bottom: 2px; left: 50%; transform: translateX(-50%); }
-        .smile { width: 20px; height: 9px; border-bottom: 2.5px solid #374151; border-radius: 0 0 10px 10px; margin-top: 1px; }
+        .eye-container { display: flex; gap: 6px; margin-top: -4px; }
+        .eye { width: 11px; height: 15px; background: white; border: 1.5px solid #374151; border-radius: 50%; position: relative; }
+        .pupil { position: absolute; width: 5px; height: 5px; background: black; border-radius: 50%; bottom: 2px; left: 50%; transform: translateX(-50%); }
+        .smile { width: 24px; height: 10px; border-bottom: 3px solid #374151; border-radius: 0 0 12px 12px; margin-top: 2px; }
 
-        /* 横向毛毛虫身体 */
+        /* 横向毛毛虫身体 - 优化了尺寸(64px)以利用空间 */
         .caterpillar-slot {
-            width: 52px; 
-            height: 52px; 
+            width: 64px; 
+            height: 64px; 
             border-radius: 50%; 
-            border: 2px solid #e2e8f0; 
+            border: 3px solid #e2e8f0; 
             background-color: #ffffff;
             display: flex; 
             align-items: center; 
@@ -136,15 +136,16 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             position: relative;
             z-index: 10; 
-            font-size: 0.85rem; 
+            font-size: 1.15rem; 
             text-align: center; 
-            margin: 0 -5px; 
+            margin: 0 -6px; 
             cursor: pointer;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
-        .caterpillar-slot.filled { border: 3px solid rgba(0,0,0,0.05); color: white; z-index: 15; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .caterpillar-slot.filled { border: 4px solid rgba(0,0,0,0.05); color: white; z-index: 15; box-shadow: 0 6px 12px rgba(0,0,0,0.12); }
         
         .wiggle { animation: wiggle 2s infinite ease-in-out; }
-        @keyframes wiggle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        @keyframes wiggle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
         .progress-dot { width: 8px; height: 8px; border-radius: 50%; background-color: #e2e8f0; transition: all 0.3s ease; }
         .dot-active { background-color: #fbbf24; transform: scale(1.4); }
@@ -196,7 +197,8 @@
 
     <div id="auto-next-bar" class="loading-bar"></div>
 
-    <div id="app" class="w-full max-w-md bg-white shadow-2xl overflow-hidden relative border-x-4 border-yellow-100 mx-auto">
+    <!-- 将 max-w-md 升级为 max-w-2xl，以便在横屏时更好地利用宽度 -->
+    <div id="app" class="w-full max-w-2xl bg-white shadow-2xl overflow-hidden relative border-x-4 border-yellow-100 mx-auto">
         
         <!-- 应用最大化控制 -->
         <button onclick="toggleMaximize()" class="maximize-btn" id="max-btn" title="铺满屏幕">
@@ -539,8 +541,9 @@
         function renderSentence(data) {
             window.currentTempSentence = Array(data.parts.length).fill(null);
             const shuffled = [...data.parts].sort(() => Math.random() - 0.5);
+            // 毛毛虫容器增加了高度 min-h-[220px] 和垂直内边距 py-10
             let caterpillarHtml = `
-                <div class="flex flex-row items-center flex-wrap justify-center w-full px-2 gap-y-2">
+                <div class="flex flex-row items-center flex-wrap justify-center w-full px-4 gap-y-6">
                     <div class="caterpillar-head-container wiggle">
                         <div class="antenna antenna-l"></div><div class="antenna antenna-r"></div>
                         <div class="caterpillar-face">
@@ -552,10 +555,13 @@
                 </div>
             `;
             document.getElementById('stage-content').innerHTML = `
-                <div class="w-full flex flex-col items-center space-y-6">
-                    <div class="w-full bg-blue-50/40 rounded-[2.5rem] py-8 px-2 border-2 border-dashed border-blue-100 flex justify-center items-center min-h-[160px]">${caterpillarHtml}</div>
-                    <div class="flex flex-wrap gap-2.5 justify-center w-full px-2 max-h-[30vh] overflow-y-auto no-scrollbar">
-                        ${shuffled.map((word, idx) => `<button id="sentence-btn-${idx}" onclick="handleSentenceClick(${idx}, '${word}', '${data.parts.join('')}')" class="px-4 py-3 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-2xl text-lg shadow-md active:scale-90 transition">${word}</button>`).join('')}
+                <div class="w-full flex flex-col items-center space-y-8">
+                    <!-- 中间展示范围变宽变深 (min-h-[220px], py-10) -->
+                    <div class="w-full bg-blue-50/40 rounded-[3rem] py-10 px-4 border-2 border-dashed border-blue-100 flex justify-center items-center min-h-[220px] shadow-inner">${caterpillarHtml}</div>
+                    
+                    <!-- 词块选择区也增加了间距 -->
+                    <div class="flex flex-wrap gap-4 justify-center w-full px-2 max-h-[35vh] overflow-y-auto no-scrollbar">
+                        ${shuffled.map((word, idx) => `<button id="sentence-btn-${idx}" onclick="handleSentenceClick(${idx}, '${word}', '${data.parts.join('')}')" class="px-6 py-4 ${data.colors[data.parts.indexOf(word)] || 'bg-blue-400'} text-white font-bold rounded-2xl text-xl shadow-md active:scale-90 transition">${word}</button>`).join('')}
                     </div>
                 </div>
             `;
